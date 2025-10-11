@@ -1,0 +1,46 @@
+{
+    "name": "fullstack-monorepo-template",
+    "description": "A modern Full-stack monorepo template to kickstart your web development.",
+    "author": "Arthur Lobo",
+    "private": true,
+    "version": "1.0.0",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/arthurlbo/fullstack-monorepo-template.git"
+    },
+    "scripts": {
+        "build": "turbo run build",
+        "dev": "turbo run dev",
+        "lint": "turbo run lint",
+        "lint:fix": "turbo run lint:fix",
+        "prettier:fix": "turbo run prettier:fix",
+        "format": "turbo run format",
+        "check-types": "turbo run check-types",
+        "commit": "cz"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^20.1.0",
+        "@commitlint/config-conventional": "^20.0.0",
+        "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+        "commitizen": "^4.3.1",
+        "cz-conventional-changelog": "^3.3.0",
+        "husky": "^9.1.7",
+        "prettier": "^3.6.2",
+        "prettier-plugin-tailwindcss": "^0.6.14",
+        "turbo": "^2.5.8",
+        "typescript": "5.9.2"
+    },
+    "packageManager": "pnpm@10.18.2",
+    "engines": {
+        "node": ">=18"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "dependencies": {
+        "eslint-plugin-prettier": "^5.5.4"
+    }
+}
