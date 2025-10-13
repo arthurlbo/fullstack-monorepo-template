@@ -1,5 +1,6 @@
 {
     "extends": "@repo/typescript-config/next.json",
+    // Need to add these configs directly here because Next.js.
     "compilerOptions": {
         "plugins": [
             {
