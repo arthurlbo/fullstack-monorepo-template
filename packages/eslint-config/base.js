@@ -1,14 +1,13 @@
-import js from "@eslint/js";
+import eslint from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
-import onlyWarn from "eslint-plugin-only-warn";
 import prettierPlugin from "eslint-plugin-prettier";
 import turboPlugin from "eslint-plugin-turbo";
 import tseslint from "typescript-eslint";
 
 export const baseConfig = [
-    js.configs.recommended,
-    eslintConfigPrettier,
+    eslint.configs.recommended,
     ...tseslint.configs.recommended,
+    eslintConfigPrettier,
     {
         files: ["**/*.ts", "**/*.tsx"],
         rules: {
@@ -38,7 +37,7 @@ export const baseConfig = [
             prettier: prettierPlugin,
         },
         rules: {
-            "prettier/prettier": "warn",
+            "prettier/prettier": "error",
         },
     },
     {
@@ -48,13 +47,5 @@ export const baseConfig = [
         rules: {
             "turbo/no-undeclared-env-vars": "warn",
         },
-    },
-    {
-        plugins: {
-            onlyWarn,
-        },
-    },
-    {
-        ignores: ["dist/**"],
     },
 ];

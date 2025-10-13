@@ -36,5 +36,6 @@
         "^@/components(/.*)?$",
         "^@/app(/.*)?$",
         "^[./]"
-    ]
+    ],
+    "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"]
 }

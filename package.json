@@ -3,7 +3,7 @@
     "description": "A modern Full-stack monorepo template to kickstart your web development.",
     "author": "Arthur Lobo",
     "private": true,
-    "version": "1.0.0",
+    "version": "0.0.1",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -39,8 +39,5 @@
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
         }
-    },
-    "dependencies": {
-        "eslint-plugin-prettier": "^5.5.4"
     }
 }

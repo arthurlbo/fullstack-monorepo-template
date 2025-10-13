@@ -3,5 +3,7 @@ packages:
   - packages/*
 
 onlyBuiltDependencies:
+  - '@nestjs/core'
   - '@tailwindcss/oxide'
   - sharp
+  - unrs-resolver
