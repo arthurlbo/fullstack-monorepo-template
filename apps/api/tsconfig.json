@@ -1,4 +1,9 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
-    "extends": "@repo/typescript-config/nest.json"
+    "extends": "@repo/typescript-config/nest.json",
+    "compilerOptions": {
+        "paths": {
+            "@/*": ["./src/*"]
+        }
+    }
 }

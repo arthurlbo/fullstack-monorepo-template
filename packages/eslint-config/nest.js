@@ -20,6 +20,6 @@ export const nestConfig = [
             "@typescript-eslint/no-floating-promises": "warn",
             "@typescript-eslint/no-unsafe-argument": "warn",
         },
-        ignores: ["dist/**", "node_modules/**", "eslint.config.mjs"],
+        ignores: ["dist/**", "node_modules/**", "eslint.config.mjs", "jest*"],
     },
 ];
