@@ -23,6 +23,21 @@
         "check-types": {
             "dependsOn": ["^check-types"]
         },
+        "test:unit": {
+            "cache": false,
+            "persistent": true
+        },
+        "test:unit:coverage": {
+            "outputs": ["coverage/**"]
+        },
+        "test:e2e": {
+            "cache": false,
+            "persistent": true
+        },
+        "test:all": {
+            "cache": false,
+            "persistent": true
+        },
         "dev": {
             "cache": false,
             "persistent": true
