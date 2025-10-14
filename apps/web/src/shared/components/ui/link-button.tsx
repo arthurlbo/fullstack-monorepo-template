@@ -1,8 +1,7 @@
 import Link from "next/link";
 
-import { TablerIcon } from "@tabler/icons-react";
-
 import { cn } from "@/shared/utils";
+import { TablerIcon } from "@tabler/icons-react";
 
 interface IProps {
     href: string;
