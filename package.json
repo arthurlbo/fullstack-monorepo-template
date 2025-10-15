@@ -16,14 +16,15 @@
         "lint:fix": "turbo run lint:fix",
         "prettier:fix": "turbo run prettier:fix",
         "format": "turbo run format",
-        "check-types": "turbo run check-types",
+        "typecheck": "turbo run typecheck",
         "commit": "cz"
     },
     "devDependencies": {
-        "@repo/typescript-config": "workspace:*",
         "@commitlint/cli": "^20.1.0",
         "@commitlint/config-conventional": "^20.0.0",
+        "@repo/typescript-config": "workspace:*",
         "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+        "@types/node": "^24.7.2",
         "commitizen": "^4.3.1",
         "cz-conventional-changelog": "^3.3.0",
         "husky": "^9.1.7",
@@ -34,7 +35,7 @@
     },
     "packageManager": "pnpm@10.18.2",
     "engines": {
-        "node": ">=18"
+        "node": ">=20"
     },
     "config": {
         "commitizen": {

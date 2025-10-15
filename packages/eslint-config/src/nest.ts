@@ -1,8 +1,14 @@
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+import type { Linter } from "eslint";
 import globals from "globals";
 
 import { baseConfig } from "./base.js";
 
-export const nestConfig = [
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export const nestConfig: Linter.Config[] = [
     ...baseConfig,
     {
         languageOptions: {
@@ -13,7 +19,7 @@ export const nestConfig = [
             sourceType: "commonjs",
             parserOptions: {
                 projectService: true,
-                tsconfigRootDir: import.meta.dirname,
+                tsconfigRootDir: __dirname,
             },
         },
         rules: {

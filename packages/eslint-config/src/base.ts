@@ -1,10 +1,11 @@
 import eslint from "@eslint/js";
+import type { Linter } from "eslint";
 import eslintConfigPrettier from "eslint-config-prettier";
 import prettierPlugin from "eslint-plugin-prettier";
 import turboPlugin from "eslint-plugin-turbo";
 import tseslint from "typescript-eslint";
 
-export const baseConfig = [
+export const baseConfig: Linter.Config[] = [
     eslint.configs.recommended,
     ...tseslint.configs.recommended,
     eslintConfigPrettier,

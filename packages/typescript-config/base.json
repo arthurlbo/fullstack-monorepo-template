@@ -6,15 +6,15 @@
         "esModuleInterop": true,
         "incremental": false,
         "isolatedModules": true,
-        "lib": ["es2023", "DOM", "DOM.Iterable"],
-        "module": "NodeNext",
+        "lib": ["ES2023", "DOM", "DOM.Iterable"],
+        "module": "nodenext",
         "moduleDetection": "force",
-        "moduleResolution": "NodeNext",
+        "moduleResolution": "nodenext",
         "noUncheckedIndexedAccess": true,
         "resolveJsonModule": true,
         "skipLibCheck": true,
         "strict": true,
         "forceConsistentCasingInFileNames": true,
-        "target": "ES2023",
+        "target": "ES2023"
     }
 }
