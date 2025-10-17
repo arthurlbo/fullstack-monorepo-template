@@ -1,0 +1,21 @@
+{
+    "name": "@repo/playwright",
+    "version": "0.0.1",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "build": "tsc"
+    },
+    "exports": {
+        "./base": {
+            "import": "./dist/base.js",
+            "require": "./dist/base.js",
+            "types": "./dist/base.d.ts"
+        }
+    },
+    "devDependencies": {
+        "@repo/typescript": "workspace:*",
+        "@playwright/test": "^1.56.0",
+        "typescript": "^5.9.3"
+    }
+}

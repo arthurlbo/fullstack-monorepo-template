@@ -1,6 +1,6 @@
 import nextJest from "next/jest.js";
 
-import { nextConfig } from "@repo/jest-config";
+import { nextConfig } from "@repo/jest/next";
 
 const createJestConfig = nextJest({
     dir: "./",

@@ -14,9 +14,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^20.0.0
         version: 20.0.0
-      '@repo/typescript-config':
+      '@repo/typescript':
         specifier: workspace:*
-        version: link:packages/typescript-config
+        version: link:packages/config/typescript
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^5.2.2
         version: 5.2.2(prettier@3.6.2)
@@ -72,15 +72,15 @@ importers:
       '@nestjs/testing':
         specifier: ^11.1.6
         version: 11.1.6(@nestjs/common@11.1.6(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.6)(@nestjs/platform-express@11.1.6)
-      '@repo/eslint-config':
+      '@repo/eslint':
         specifier: workspace:*
-        version: link:../../packages/eslint-config
-      '@repo/jest-config':
+        version: link:../../packages/config/eslint
+      '@repo/jest':
         specifier: workspace:*
-        version: link:../../packages/jest-config
-      '@repo/typescript-config':
+        version: link:../../packages/config/jest
+      '@repo/typescript':
         specifier: workspace:*
-        version: link:../../packages/typescript-config
+        version: link:../../packages/config/typescript
       '@types/express':
         specifier: ^5.0.3
         version: 5.0.3
@@ -151,18 +151,18 @@ importers:
       '@playwright/test':
         specifier: ^1.56.0
         version: 1.56.0
-      '@repo/eslint-config':
+      '@repo/eslint':
         specifier: workspace:*
-        version: link:../../packages/eslint-config
-      '@repo/jest-config':
+        version: link:../../packages/config/eslint
+      '@repo/jest':
         specifier: workspace:*
-        version: link:../../packages/jest-config
-      '@repo/playwright-config':
+        version: link:../../packages/config/jest
+      '@repo/playwright':
         specifier: workspace:*
-        version: link:../../packages/playwright-config
-      '@repo/typescript-config':
+        version: link:../../packages/config/playwright
+      '@repo/typescript':
         specifier: workspace:*
-        version: link:../../packages/typescript-config
+        version: link:../../packages/config/typescript
       '@tailwindcss/postcss':
         specifier: ^4.1.14
         version: 4.1.14
@@ -203,7 +203,7 @@ importers:
         specifier: 5.9.2
         version: 5.9.2
 
-  packages/eslint-config:
+  packages/config/eslint:
     devDependencies:
       '@eslint/js':
         specifier: ^9.37.0
@@ -211,6 +211,9 @@ importers:
       '@next/eslint-plugin-next':
         specifier: ^15.5.5
         version: 15.5.5
+      '@repo/typescript':
+        specifier: workspace:*
+        version: link:../typescript
       eslint:
         specifier: ^9.37.0
         version: 9.37.0(jiti@2.6.1)
@@ -239,14 +242,14 @@ importers:
         specifier: ^8.46.1
         version: 8.46.1(eslint@9.37.0(jiti@2.6.1))(typescript@5.9.3)
 
-  packages/jest-config:
+  packages/config/jest:
     devDependencies:
       '@jest/types':
         specifier: ^30.2.0
         version: 30.2.0
-      '@repo/typescript-config':
+      '@repo/typescript':
         specifier: workspace:*
-        version: link:../typescript-config
+        version: link:../typescript
       jest:
         specifier: ^30.2.0
         version: 30.2.0(@types/node@24.7.2)
@@ -254,19 +257,19 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
-  packages/playwright-config:
+  packages/config/playwright:
     devDependencies:
       '@playwright/test':
         specifier: ^1.56.0
         version: 1.56.0
-      '@repo/typescript-config':
+      '@repo/typescript':
         specifier: workspace:*
-        version: link:../typescript-config
+        version: link:../typescript
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
 
-  packages/typescript-config: {}
+  packages/config/typescript: {}
 
 packages:
 
@@ -8110,7 +8113,7 @@ snapshots:
       '@jest/expect': 30.2.0
       '@jest/test-result': 30.2.0
       '@jest/types': 30.2.0
-      '@types/node': 22.18.10
+      '@types/node': 24.7.2
       chalk: 4.1.2
       co: 4.6.0
       dedent: 1.7.0
@@ -8288,7 +8291,7 @@ snapshots:
       '@jest/environment': 30.2.0
       '@jest/fake-timers': 30.2.0
       '@jest/types': 30.2.0
-      '@types/node': 22.18.10
+      '@types/node': 24.7.2
       jest-mock: 30.2.0
       jest-util: 30.2.0
       jest-validate: 30.2.0
@@ -8479,7 +8482,7 @@ snapshots:
 
   jest-worker@30.2.0:
     dependencies:
-      '@types/node': 22.18.10
+      '@types/node': 24.7.2
       '@ungap/structured-clone': 1.3.0
       jest-util: 30.2.0
       merge-stream: 2.0.0

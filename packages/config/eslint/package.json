@@ -1,23 +1,32 @@
 {
-    "name": "@repo/eslint-config",
+    "name": "@repo/eslint",
     "version": "0.0.1",
     "type": "module",
     "private": true,
     "scripts": {
         "build": "tsc"
     },
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
     "exports": {
-        ".": {
-            "import": "./dist/index.js",
-            "require": "./dist/index.js",
-            "types": "./dist/index.d.ts"
+        "./base": {
+            "import": "./dist/base.js",
+            "require": "./dist/base.js",
+            "types": "./dist/base.d.ts"
+        },
+        "./next": {
+            "import": "./dist/next.js",
+            "require": "./dist/next.js",
+            "types": "./dist/next.d.ts"
+        },
+        "./nest": {
+            "import": "./dist/nest.js",
+            "require": "./dist/nest.js",
+            "types": "./dist/nest.d.ts"
         }
     },
     "devDependencies": {
         "@eslint/js": "^9.37.0",
         "@next/eslint-plugin-next": "^15.5.5",
+        "@repo/typescript": "workspace:*",
         "eslint": "^9.37.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-prettier": "^5.5.4",

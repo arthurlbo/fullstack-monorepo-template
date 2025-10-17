@@ -1,4 +1,4 @@
-import { nestConfig } from "@repo/eslint-config";
+import { nestConfig } from "@repo/eslint/nest";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default nestConfig;
