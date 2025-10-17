@@ -31,6 +31,14 @@ export const baseConfig: Linter.Config[] = [
                     },
                 },
             ],
+            "@typescript-eslint/no-unused-vars": [
+                "error",
+                {
+                    argsIgnorePattern: "^_",
+                    varsIgnorePattern: "^_",
+                    caughtErrorsIgnorePattern: "^_",
+                },
+            ],
         },
     },
     {
@@ -48,5 +56,8 @@ export const baseConfig: Linter.Config[] = [
         rules: {
             "turbo/no-undeclared-env-vars": "warn",
         },
+    },
+    {
+        ignores: ["node_modules/**", "dist/**", "build/**", "coverage/**"],
     },
 ];

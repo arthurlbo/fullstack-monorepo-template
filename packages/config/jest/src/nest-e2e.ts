@@ -1,6 +1,6 @@
 import type { Config } from "jest";
 
-import { nestConfig } from "./nest.js";
+import { nestConfig } from "./nest";
 
 export const nestE2eConfig = {
     ...nestConfig,

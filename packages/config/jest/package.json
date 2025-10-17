@@ -3,35 +3,42 @@
     "version": "0.0.1",
     "type": "module",
     "private": true,
+    "files": [
+        "dist"
+    ],
     "scripts": {
-        "build": "tsc"
+        "build": "tsup"
     },
     "exports": {
-         "./base": {
-            "import": "./dist/base.js",
-            "require": "./dist/base.js",
-            "types": "./dist/base.d.ts"
+        "./base": {
+            "types": "./dist/base.d.ts",
+            "import": "./dist/base.mjs",
+            "require": "./dist/base.cjs"
         },
         "./next": {
-            "import": "./dist/next.js",
-            "require": "./dist/next.js",
-            "types": "./dist/next.d.ts"
+            "types": "./dist/next.d.ts",
+            "import": "./dist/next.mjs",
+            "require": "./dist/next.cjs"
         },
         "./nest": {
-            "import": "./dist/nest.js",
-            "require": "./dist/nest.js",
-            "types": "./dist/nest.d.ts"
+            "types": "./dist/nest.d.ts",
+            "import": "./dist/nest.mjs",
+            "require": "./dist/nest.cjs"
         },
         "./nest-e2e": {
-            "import": "./dist/nest-e2e.js",
-            "require": "./dist/nest-e2e.js",
-            "types": "./dist/nest-e2e.d.ts"
+            "types": "./dist/nest-e2e.d.ts",
+            "import": "./dist/nest-e2e.mjs",
+            "require": "./dist/nest-e2e.cjs"
         }
     },
+    "peerDependencies": {
+        "jest": "^30.2.0"
+    },
     "devDependencies": {
+        "@repo/tsup": "workspace:*",
         "@repo/typescript": "workspace:*",
         "@jest/types": "^30.2.0",
-        "jest": "^30.2.0",
+        "tsup": "^8.5.0",
         "typescript": "^5.9.3"
     }
 }
