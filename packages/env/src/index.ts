@@ -2,9 +2,9 @@ import path from "node:path";
 
 import * as dotenv from "dotenv";
 import { findUpSync } from "find-up";
-import { treeifyError } from "zod";
+import z from "zod";
 
-import { type Env, envSchema } from "./env.schema";
+import { apiSchema, databaseSchema, globalSchema, webSchema } from "./env.schema";
 
 const getEnvFilePath = (): string => {
     const environment = process.env.NODE_ENV || "development";
@@ -19,25 +19,24 @@ const getEnvFilePath = (): string => {
     return path.join(rootDir, `.env.${environment}`);
 };
 
-const loadEnv = (): Env => {
-    const envPath = getEnvFilePath();
+const envPath = getEnvFilePath();
+dotenv.config({ path: envPath });
 
-    dotenv.config({ path: envPath });
-
-    const validationResult = envSchema.safeParse(process.env);
+const validateEnv = <T extends z.ZodType<any>>(schema: T, schemaName: string): z.infer<T> => {
+    const validationResult = schema.safeParse(process.env);
 
     if (validationResult.success === false) {
         console.error(
-            "❌ Invalid environment variables:",
-            JSON.stringify(treeifyError(validationResult.error), null, 2),
+            `❌ Invalid environment variables for [${schemaName}]:`,
+            JSON.stringify(z.treeifyError(validationResult.error), null, 2),
         );
-
-        throw new Error("Invalid environment variables");
+        throw new Error(`Invalid environment variables for ${schemaName}`);
     }
 
     return validationResult.data;
 };
 
-const env = loadEnv();
-
-export { env, type Env };
+export const globalEnv = validateEnv(globalSchema, "global");
+export const databaseEnv = validateEnv(databaseSchema, "database");
+export const apiEnv = validateEnv(apiSchema, "api");
+export const webEnv = validateEnv(webSchema, "web");
