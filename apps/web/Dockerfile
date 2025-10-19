@@ -7,7 +7,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 
 # Copy workspace root files
-COPY pnpm-workspace.yaml pnpm-lock.yaml package.json turbo.json tsconfig.json ./
+COPY .prettierrc.json pnpm-workspace.yaml pnpm-lock.yaml package.json turbo.json tsconfig.json ./
 COPY packages ./packages
 COPY apps/web ./apps/web
 
@@ -31,23 +31,14 @@ WORKDIR /app
 # Set the environment
 ENV NODE_ENV=production
 
-# Copy workspace files
-COPY pnpm-workspace.yaml pnpm-lock.yaml package.json ./
-
-# Copy built packages
-COPY --from=builder /app/packages ./packages
-
-# Copy WEB files
-COPY --from=builder /app/apps/web/package.json ./apps/web/
-COPY --from=builder /app/apps/web/public ./apps/web/public
-COPY --from=builder /app/apps/web/.next ./apps/web/.next
-COPY --from=builder /app/apps/web/next.config.* ./apps/web/
+# Copy everything from builder
+COPY --from=builder /app ./
 
 # Install production dependencies only
-RUN pnpm install --frozen-lockfile --prod --filter web...
+RUN pnpm --filter web install --frozen-lockfile
 
 # Expose port 3000 (Next.js default)
 EXPOSE 3000
 
 # Start the application
-CMD ["pnpm", "start", "--filter", "web"]
+CMD ["pnpm", "--filter", "web", "start:prod"]

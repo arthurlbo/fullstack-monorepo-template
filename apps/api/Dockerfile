@@ -7,7 +7,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 
 # Copy workspace files
-COPY pnpm-workspace.yaml pnpm-lock.yaml package.json turbo.json tsconfig.json ./
+COPY .prettierrc.json pnpm-workspace.yaml pnpm-lock.yaml package.json turbo.json tsconfig.json ./
 COPY packages ./packages
 COPY apps/api ./apps/api
 
@@ -31,21 +31,14 @@ WORKDIR /app
 # Set environment
 ENV NODE_ENV=production
 
-# Copy workspace files
-COPY pnpm-workspace.yaml pnpm-lock.yaml package.json ./
-
-# Copy built packages
-COPY --from=builder /app/packages ./packages
-
-# Copy API files
-COPY --from=builder /app/apps/api/package.json ./apps/api/
-COPY --from=builder /app/apps/api/dist ./apps/api/dist
+# Copy everything from builder
+COPY --from=builder /app ./
 
 # Install production dependencies only
-RUN pnpm install --frozen-lockfile --prod --filter api
+RUN pnpm --filter api install --frozen-lockfile
 
 # Expose port
 EXPOSE 3001
 
 # Start the application
-CMD ["pnpm", "start", "--filter", "api"]
+CMD ["pnpm", "--filter", "api", "start:prod"]
