@@ -11,12 +11,17 @@
     },
     "scripts": {
         "build": "turbo run build",
-        "dev": "turbo run dev",
+        "dev": "cross-env NODE_ENV=development turbo run dev",
+        "start:staging": "cross-env NODE_ENV=staging turbo run start",
+        "start:production": "cross-env NODE_ENV=production turbo run start",
         "lint": "turbo run lint",
         "lint:fix": "turbo run lint:fix",
         "prettier:fix": "turbo run prettier:fix",
         "format": "turbo run format",
         "typecheck": "turbo run typecheck",
+        "docker:dev": "docker compose -f docker-compose.development.yaml --env-file .env.development up -d",
+        "docker:staging": "docker compose -f docker-compose.staging.yaml --env-file .env.staging up -d",
+        "docker:production": "docker compose -f docker-compose.production.yaml --env-file .env.production up -d",
         "commit": "cz"
     },
     "devDependencies": {
@@ -26,6 +31,7 @@
         "@trivago/prettier-plugin-sort-imports": "^5.2.2",
         "@types/node": "^24.7.2",
         "commitizen": "^4.3.1",
+        "cross-env": "^10.1.0",
         "cz-conventional-changelog": "^3.3.0",
         "husky": "^9.1.7",
         "prettier": "^3.6.2",

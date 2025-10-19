@@ -13,46 +13,52 @@
     ],
     "tasks": {
         "build": {
+            "dependsOn": ["^build"],
             "inputs": ["$TURBO_DEFAULT$", ".env*"],
             "outputs": [".next/**", "!.next/cache/**", "dist/**"]
-        },
-        "lint": {
-            "dependsOn": ["^lint"]
-        },
-        "lint:fix": {
-            "dependsOn": ["^lint:fix"]
-        },
-        "prettier:fix": {
-            "dependsOn": ["^prettier:fix"]
-        },
-        "format": {
-            "dependsOn": ["^format"]
-        },
-        "typecheck": {
-            "dependsOn": ["^typecheck"]
-        },
-        "test:unit": {
-            "cache": false,
-            "persistent": true
-        },
-        "test:unit:coverage": {
-            "outputs": ["coverage/**"]
-        },
-        "test:e2e": {
-            "cache": false,
-            "persistent": true
-        },
-        "test:all": {
-            "cache": false,
-            "persistent": true
         },
         "dev": {
             "cache": false,
             "persistent": true
         },
-        "start:prod": {
+        "start": {
             "cache": false,
             "persistent": true
+        },
+        "lint": {
+            "dependsOn": ["^lint"],
+            "outputs": []
+        },
+        "lint:fix": {
+            "dependsOn": ["^lint:fix"],
+            "outputs": []
+        },
+        "prettier:fix": {
+            "dependsOn": ["^prettier:fix"],
+            "outputs": []
+        },
+        "format": {
+            "dependsOn": ["^format"],
+            "outputs": []
+        },
+        "typecheck": {
+            "dependsOn": ["^typecheck"],
+            "outputs": []
+        },
+        "test:unit": {
+            "cache": true,
+            "outputs": []
+        },
+        "test:unit:coverage": {
+            "outputs": ["coverage/**"]
+        },
+        "test:e2e": {
+            "cache": true,
+            "outputs": []
+        },
+        "test:all": {
+            "cache": true,
+            "outputs": []
         }
     }
 }

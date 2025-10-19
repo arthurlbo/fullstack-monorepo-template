@@ -6,10 +6,10 @@
     "private": true,
     "license": "UNLICENSED",
     "scripts": {
-        "build": "nest build",
         "dev": "nest start --watch",
         "dev:debug": "nest start --debug --watch",
-        "start:prod": "node dist/main",
+        "build": "nest build",
+        "start": "node dist/main",
         "lint": "eslint",
         "lint:fix": "eslint --fix",
         "prettier:fix": "prettier --write .",
