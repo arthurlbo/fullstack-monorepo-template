@@ -1,7 +1,16 @@
 {
     "$schema": "https://turborepo.com/schema.json",
     "ui": "tui",
-    "globalEnv": ["API_PORT"],
+    "globalEnv": [
+        "NODE_ENV",
+        "WEB_PORT",
+        "API_PORT",
+        "DB_HOST",
+        "DB_PORT",
+        "DB_USERNAME",
+        "DB_PASSWORD",
+        "DB_DATABASE"
+    ],
     "tasks": {
         "build": {
             "inputs": ["$TURBO_DEFAULT$", ".env*"],

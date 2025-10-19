@@ -39,7 +39,7 @@
         "@tailwindcss/postcss": "^4.1.14",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.0",
-        "@jest/types": "^30.2.0",
+        "@types/jest": "^30.0.0",
         "@types/node": "^22.18.10",
         "@types/react": "19.1.0",
         "@types/react-dom": "19.1.1",

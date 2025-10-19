@@ -1,8 +1,8 @@
 {
-    "name": "@repo/tsup",
+    "name": "@repo/env",
     "version": "0.0.1",
-    "private": true,
     "type": "module",
+    "private": true,
     "files": [
         "dist"
     ],
@@ -16,10 +16,15 @@
             "require": "./dist/index.cjs"
         }
     },
-    "peerDependencies": {
-        "tsup": "^8.5.0"
+    "dependencies": {
+        "dotenv": "^17.2.3",
+        "find-up": "^8.0.0",
+        "zod": "^4.1.12"
     },
     "devDependencies": {
-        "@repo/typescript": "workspace:*"
+        "@repo/tsup": "workspace:*",
+        "@repo/typescript": "workspace:*",
+        "tsup": "^8.5.0",
+        "typescript": "^5.9.3"
     }
 }

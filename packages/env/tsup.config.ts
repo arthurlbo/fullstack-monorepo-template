@@ -4,8 +4,7 @@ import { type Options, defineConfig } from "tsup";
 const config: Options = {
     ...baseConfig,
     bundle: true,
-    entry: ["index.ts"],
-    external: ["@playwright/test"],
+    entry: ["src/index.ts"],
 };
 
 export default defineConfig(config);

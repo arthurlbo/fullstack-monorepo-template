@@ -4,7 +4,10 @@
     "compilerOptions": {
         "module": "ESNext",
         "moduleResolution": "Bundler",
-        "noEmit": true
+        "noEmit": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "strictPropertyInitialization": false
     },
     "exclude": ["node_modules", "dist"]
 }
