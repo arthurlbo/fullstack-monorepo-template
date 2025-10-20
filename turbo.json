@@ -25,26 +25,20 @@
             "cache": false,
             "persistent": true
         },
-        "lint": {
-            "dependsOn": ["^lint"],
-            "outputs": []
+        "migrate:up": {
+            "cache": false
         },
-        "lint:fix": {
-            "dependsOn": ["^lint:fix"],
-            "outputs": []
+        "migrate:down": {
+            "cache": false
         },
-        "prettier:fix": {
-            "dependsOn": ["^prettier:fix"],
-            "outputs": []
+        "clear:db": {
+            "cache": false
         },
-        "format": {
-            "dependsOn": ["^format"],
-            "outputs": []
-        },
-        "typecheck": {
-            "dependsOn": ["^typecheck"],
-            "outputs": []
-        },
+        "lint": {},
+        "lint:fix": {},
+        "prettier:fix": {},
+        "format": {},
+        "typecheck": {},
         "test:unit": {
             "cache": true,
             "outputs": []

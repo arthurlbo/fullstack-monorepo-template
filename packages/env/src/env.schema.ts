@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const globalSchema = z.object({
-    NODE_ENV: z.enum(["development", "production", "test"]),
+    NODE_ENV: z.enum(["development", "production", "staging", "test"]),
 });
 
 export const databaseSchema = z.object({

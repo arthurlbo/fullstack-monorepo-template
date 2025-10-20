@@ -1,11 +1,11 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
-@Entity({ name: "users" })
+@Entity("users")
 export class User {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column()
+    @Column({ type: "varchar", length: 255 })
     name: string;
 
     @CreateDateColumn()

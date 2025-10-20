@@ -1,7 +1,7 @@
 import { databaseEnv } from "@repo/env";
 import { DataSource, DataSourceOptions } from "typeorm";
 
-const dataSourceOptions: DataSourceOptions = {
+export const dataSourceOptions: DataSourceOptions = {
     type: "postgres",
     host: databaseEnv.DB_HOST,
     port: databaseEnv.DB_PORT,
@@ -9,10 +9,8 @@ const dataSourceOptions: DataSourceOptions = {
     password: databaseEnv.DB_PASSWORD,
     database: databaseEnv.DB_DATABASE,
     synchronize: false,
-    entities: ["./entities/*.entity{.ts,.js}"],
-    migrations: ["./migrations/**/*"],
+    entities: ["src/entities/*.entity.{ts,js}"],
+    migrations: ["src/migrations/*.{ts,js}"],
 };
 
-const AppDataSource = new DataSource(dataSourceOptions);
-
-export { AppDataSource, dataSourceOptions };
+export const AppDataSource = new DataSource(dataSourceOptions);

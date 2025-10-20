@@ -10,7 +10,7 @@ const getEnvFilePath = (): string => {
     const environment = process.env.NODE_ENV || "development";
 
     const workspaceRoot = findUpSync("pnpm-workspace.yaml", {
-        cwd: __dirname,
+        cwd: process.cwd(),
         type: "file",
     });
 
