@@ -11,6 +11,7 @@
     },
     "scripts": {
         "commit": "cz",
+        "prepare": "husky",
         "build": "turbo run build",
         "dev": "pnpm env::dev turbo run dev",
         "start:dev": "pnpm env::dev turbo run start",
