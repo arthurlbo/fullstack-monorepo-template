@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 import { cn } from "@/shared/utils";
-import { TablerIcon } from "@tabler/icons-react";
+import { Icon } from "@tabler/icons-react";
 
 interface IProps {
     href: string;
     label: string;
-    icon: TablerIcon;
+    icon: Icon;
     className?: string;
 }
 

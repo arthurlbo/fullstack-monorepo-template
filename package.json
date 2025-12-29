@@ -3,7 +3,7 @@
     "description": "A modern Full-stack monorepo template to kickstart your web development.",
     "author": "Arthur Lobo",
     "private": true,
-    "version": "0.0.1",
+    "version": "1.0.0",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -36,21 +36,21 @@
         "env::production": "cross-env NODE_ENV=production"
     },
     "devDependencies": {
-        "@commitlint/cli": "^20.1.0",
-        "@commitlint/config-conventional": "^20.0.0",
+        "@commitlint/cli": "^20.2.0",
+        "@commitlint/config-conventional": "^20.2.0",
         "@repo/typescript": "workspace:*",
-        "@trivago/prettier-plugin-sort-imports": "^5.2.2",
-        "@types/node": "^24.7.2",
+        "@trivago/prettier-plugin-sort-imports": "^6.0.0",
+        "@types/node": "^25.0.3",
         "commitizen": "^4.3.1",
         "cross-env": "^10.1.0",
         "cz-conventional-changelog": "^3.3.0",
         "husky": "^9.1.7",
-        "prettier": "^3.6.2",
-        "prettier-plugin-tailwindcss": "^0.6.14",
-        "turbo": "^2.5.8",
-        "typescript": "5.9.2"
+        "prettier": "^3.7.4",
+        "prettier-plugin-tailwindcss": "^0.7.2",
+        "turbo": "^2.7.2",
+        "typescript": "5.9.3"
     },
-    "packageManager": "pnpm@10.18.2",
+    "packageManager": "pnpm@10.26.2",
     "engines": {
         "node": ">=20"
     },

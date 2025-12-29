@@ -34,10 +34,10 @@ apps/api/
 │  ├─ presentation/       # Controllers, presenters
 │  └─ shared/             # Shared utilities within the API
 ├─ test/
-│  ├─ unit/               # Jest unit tests
 │  └─ e2e/                # E2E tests (Supertest)
 ├─ eslint.config.mjs
-├─ jest.config.js
+├─ jest.config.ts
+├─ jest.setup.ts
 ├─ jest-e2e.config.js
 └─ Dockerfile
 ```

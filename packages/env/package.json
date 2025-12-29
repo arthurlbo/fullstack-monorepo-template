@@ -1,6 +1,6 @@
 {
     "name": "@repo/env",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "type": "module",
     "private": true,
     "files": [
@@ -19,12 +19,12 @@
     "dependencies": {
         "dotenv": "^17.2.3",
         "find-up": "^8.0.0",
-        "zod": "^4.1.12"
+        "zod": "^4.2.1"
     },
     "devDependencies": {
         "@repo/tsup": "workspace:*",
         "@repo/typescript": "workspace:*",
-        "tsup": "^8.5.0",
+        "tsup": "^8.5.1",
         "typescript": "^5.9.3"
     }
 }

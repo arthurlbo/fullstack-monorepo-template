@@ -1,4 +1,4 @@
-import { LinkButton } from "@/shared/components";
+import { LinkButton } from "@/shared/components/ui";
 import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
 
 export const dynamic = "force-static";
