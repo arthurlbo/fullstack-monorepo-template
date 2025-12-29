@@ -4,7 +4,7 @@ This is ou Next.js app template in the monorepo.
 
 ## What is inside?
 
-- Next.js 15
+- Next.js 16
 - React 19 + TypeScript
 - Tailwind CSS v4
 - Jest + Testing Library (unit tests)
@@ -29,15 +29,16 @@ apps/web/
 ├─ public/
 ├─ src/
 │  ├─ app/                 # App Router (layout, pages, providers)
+│  ├─ assets/              # Static assets
 │  ├─ core/                # Core layers (application/domain/infrastructure)
 │  ├─ features/            # Feature modules (by domain)
 │  └─ shared/              # Shared utilities/components within the app
 ├─ tests/
 │  ├─ e2e/                 # Playwright tests
 │  ├─ mocks/
-│  └─ unit/                # Jest unit tests
 ├─ eslint.config.mjs
-├─ jest.config.js
+├─ jest.config.ts
+├─ jest.setup.ts
 ├─ playwright.config.ts
 └─ next.config.ts
 └─ Dockerfile
