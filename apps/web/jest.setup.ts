@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 
-import "./tests/mocks";
+import "./tests/mocks/next-image.mock";
 
 Element.prototype.scrollIntoView = jest.fn();
 global.structuredClone = (val: unknown) => JSON.parse(JSON.stringify(val));

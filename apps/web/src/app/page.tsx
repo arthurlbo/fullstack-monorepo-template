@@ -5,7 +5,7 @@ export const dynamic = "force-static";
 
 export default function Home() {
     return (
-        <main className="text-primary flex flex-col items-center gap-6 text-center">
+        <main className="text-primary-100 flex flex-col items-center gap-6 text-center">
             <h1 className="text-2xl font-bold">Hello Dev 🥳</h1>
 
             <p className="max-w-md">
@@ -17,13 +17,13 @@ export default function Home() {
                     href="https://github.com/arthurlbo/fullstack-monorepo-template"
                     label="Explore Documentation"
                     icon={IconBrandGithub}
-                    className="border-border hover:bg-border text-primary border bg-transparent"
+                    className="border-border hover:bg-border text-primary-100 border bg-transparent"
                 />
                 <LinkButton
                     href="https://www.linkedin.com/in/arthurlbo/"
                     label="Who Am I?"
                     icon={IconBrandLinkedin}
-                    className="text-primary bg-emerald-500/80 hover:bg-emerald-500"
+                    className="text-primary-100 bg-emerald-500/80 hover:bg-emerald-500"
                 />
             </div>
         </main>

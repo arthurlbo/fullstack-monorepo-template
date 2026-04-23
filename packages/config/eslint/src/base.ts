@@ -5,10 +5,18 @@ import prettierPlugin from "eslint-plugin-prettier";
 import turboPlugin from "eslint-plugin-turbo";
 import tseslint from "typescript-eslint";
 
+const toLinterConfig = (config: unknown): Linter.Config => config as Linter.Config;
+const toLinterConfigArray = (configs: readonly unknown[]): Linter.Config[] =>
+    configs.map((config) => toLinterConfig(config));
+type ConfigPlugin = NonNullable<Linter.Config["plugins"]>[string];
+
+const prettierLinterPlugin = prettierPlugin as unknown as ConfigPlugin;
+const turboLinterPlugin = turboPlugin as unknown as ConfigPlugin;
+
 export const baseConfig: Linter.Config[] = [
-    eslint.configs.recommended,
-    ...tseslint.configs.recommended,
-    eslintConfigPrettier,
+    toLinterConfig(eslint.configs.recommended),
+    ...toLinterConfigArray(tseslint.configs.recommended),
+    toLinterConfig(eslintConfigPrettier),
     {
         files: ["**/*.ts", "**/*.tsx"],
         rules: {
@@ -43,7 +51,7 @@ export const baseConfig: Linter.Config[] = [
     },
     {
         plugins: {
-            prettier: prettierPlugin,
+            prettier: prettierLinterPlugin,
         },
         rules: {
             "prettier/prettier": "error",
@@ -51,7 +59,7 @@ export const baseConfig: Linter.Config[] = [
     },
     {
         plugins: {
-            turbo: turboPlugin,
+            turbo: turboLinterPlugin,
         },
         rules: {
             "turbo/no-undeclared-env-vars": "warn",

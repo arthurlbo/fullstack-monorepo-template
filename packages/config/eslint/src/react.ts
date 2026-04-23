@@ -5,12 +5,18 @@ import globals from "globals";
 
 import { baseConfig } from "./base";
 
+const toLinterConfig = (config: unknown): Linter.Config => config as Linter.Config;
+type ConfigPlugin = NonNullable<Linter.Config["plugins"]>[string];
+
+const reactRecommendedConfig = toLinterConfig(pluginReact.configs.flat.recommended);
+const reactHooksPlugin = pluginReactHooks as unknown as ConfigPlugin;
+
 export const reactConfig: Linter.Config[] = [
     ...baseConfig,
     {
-        ...pluginReact.configs.flat.recommended,
+        ...reactRecommendedConfig,
         languageOptions: {
-            ...pluginReact.configs.flat.recommended?.languageOptions,
+            ...reactRecommendedConfig.languageOptions,
             globals: {
                 ...globals.serviceworker,
             },
@@ -18,7 +24,7 @@ export const reactConfig: Linter.Config[] = [
     },
     {
         plugins: {
-            "react-hooks": pluginReactHooks as any,
+            "react-hooks": reactHooksPlugin,
         },
         settings: { react: { version: "detect" } },
         rules: {

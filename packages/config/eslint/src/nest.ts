@@ -1,12 +1,9 @@
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-
 import type { Linter } from "eslint";
 import globals from "globals";
 
 import { baseConfig } from "./base";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = decodeURIComponent(new URL(".", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1"));
 
 export const nestConfig: Linter.Config[] = [
     ...baseConfig,

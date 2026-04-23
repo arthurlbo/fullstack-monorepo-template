@@ -25,14 +25,14 @@
     },
     "dependencies": {
         "@repo/env": "workspace:*",
-        "pg": "^8.16.3",
+        "pg": "^8.20.0",
         "typeorm": "^0.3.28"
     },
     "devDependencies": {
         "@repo/eslint": "workspace:*",
         "@repo/tsup": "workspace:*",
         "@repo/typescript": "workspace:*",
-        "@swc/core": "^1.15.7",
+        "@swc/core": "^1.15.30",
         "ts-node": "^10.9.2",
         "tsup": "^8.5.1",
         "tsx": "^4.21.0"
