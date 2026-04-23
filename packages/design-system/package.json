@@ -5,10 +5,9 @@
     "private": true,
     "scripts": {
         "build": "tsup",
-        "lint": "eslint",
-        "lint:fix": "eslint --fix",
-        "prettier:fix": "prettier --write .",
-        "format": "pnpm lint:fix && pnpm prettier:fix",
+        "lint": "biome lint .",
+        "lint:fix": "biome lint --write .",
+        "format": "biome check --write .",
         "typecheck": "tsc --noEmit"
     },
     "files": [
@@ -40,13 +39,13 @@
         "tailwind-merge": "^3.5.0"
     },
     "devDependencies": {
-        "@repo/eslint": "workspace:*",
+        "@biomejs/biome": "^1.9.4",
+        "@repo/biome": "workspace:*",
         "@repo/tsup": "workspace:*",
         "@repo/typescript": "workspace:*",
         "@tailwindcss/postcss": "^4.2.4",
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
-        "eslint": "^10.2.1",
         "react": "^19.2.5",
         "react-dom": "^19.2.5",
         "tailwindcss": "^4.2.4",

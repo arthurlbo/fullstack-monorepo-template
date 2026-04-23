@@ -1,0 +1,15 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+    "extends": ["./base.json"],
+    "linter": {
+        "rules": {
+            "correctness": {
+                "useExhaustiveDependencies": "warn",
+                "useHookAtTopLevel": "error"
+            }
+        }
+    },
+    "files": {
+        "ignore": ["node_modules", "dist", "build", "coverage", "next-env.d.ts"]
+    }
+}

@@ -4,6 +4,7 @@ packages:
   - packages/config/*
 
 onlyBuiltDependencies:
+  - '@biomejs/biome'
   - '@nestjs/core'
   - '@swc/core'
   - '@tailwindcss/oxide'

@@ -8,6 +8,8 @@
     ],
     "scripts": {
         "build": "tsup",
+        "lint": "biome lint .",
+        "lint:fix": "biome lint --write .",
         "typeorm:tsx": "tsx ./node_modules/typeorm/cli.js",
         "migrate:up": "pnpm typeorm:tsx migration:run -d ./src/data-source.ts",
         "migrate:down": "pnpm typeorm:tsx migration:revert -d ./src/data-source.ts",
@@ -29,7 +31,8 @@
         "typeorm": "^0.3.28"
     },
     "devDependencies": {
-        "@repo/eslint": "workspace:*",
+        "@biomejs/biome": "^1.9.4",
+        "@repo/biome": "workspace:*",
         "@repo/tsup": "workspace:*",
         "@repo/typescript": "workspace:*",
         "@swc/core": "^1.15.30",

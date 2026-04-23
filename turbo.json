@@ -37,7 +37,6 @@
         },
         "lint": {},
         "lint:fix": {},
-        "prettier:fix": {},
         "format": {},
         "typecheck": {},
         "test:unit": {
