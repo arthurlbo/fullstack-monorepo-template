@@ -1,5 +1,5 @@
 import { databaseEnv } from "@repo/env";
-import { DataSource, DataSourceOptions } from "typeorm";
+import { DataSource, type DataSourceOptions } from "typeorm";
 
 export const dataSourceOptions: DataSourceOptions = {
     type: "postgres",

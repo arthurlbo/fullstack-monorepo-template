@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { cn } from "@/shared/utils";
-import { Icon } from "@tabler/icons-react";
+import type { Icon } from "@tabler/icons-react";
 
 interface IProps {
     href: string;
@@ -19,7 +19,7 @@ export const LinkButton = ({ className, href, label, icon: Icon }: IProps) => {
             aria-label={label}
             className={cn(
                 "flex items-center gap-1 rounded-md px-4 py-2",
-                "bg-foreground text-primary-foreground hover:bg-foreground/90 text-sm font-semibold",
+                "bg-foreground font-semibold text-primary-foreground text-sm hover:bg-foreground/90",
                 "transition-all duration-300 ease-in-out",
                 className,
             )}

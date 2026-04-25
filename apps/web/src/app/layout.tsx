@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
             <body
-                className={`${plusJakartaSans.variable} bg-background relative flex min-h-screen w-full max-w-full flex-col items-center justify-center overflow-x-hidden font-sans antialiased`}
+                className={`${plusJakartaSans.variable} relative flex min-h-screen w-full max-w-full flex-col items-center justify-center overflow-x-hidden bg-background font-sans antialiased`}
             >
                 <Providers
                     themeConfig={{

@@ -1,9 +1,9 @@
-import { INestApplication } from "@nestjs/common";
-import { Test, TestingModule } from "@nestjs/testing";
+import type { INestApplication } from "@nestjs/common";
+import { Test, type TestingModule } from "@nestjs/testing";
 
 import { AppModule } from "@/app.module";
 import request from "supertest";
-import { App } from "supertest/types";
+import type { App } from "supertest/types";
 
 describe("AppController (e2e)", () => {
     let app: INestApplication<App>;

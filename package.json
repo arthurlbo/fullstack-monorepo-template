@@ -19,8 +19,7 @@
         "start:production": "pnpm env::production turbo run start",
         "lint": "turbo run lint",
         "lint:fix": "turbo run lint:fix",
-        "prettier:fix": "turbo run prettier:fix",
-        "format": "turbo run format",
+        "lint:fix:unsafe": "turbo run lint:fix:unsafe",
         "typecheck": "turbo run typecheck",
         "migrate:up:dev": "pnpm env::dev pnpm migrate::up",
         "migrate:down:dev": "pnpm env::dev pnpm migrate::down",
@@ -36,16 +35,14 @@
         "env::production": "cross-env NODE_ENV=production"
     },
     "devDependencies": {
+        "@biomejs/biome": "^1.9.4",
         "@commitlint/cli": "^20.5.0",
         "@commitlint/config-conventional": "^20.5.0",
         "@repo/typescript": "workspace:*",
-        "@trivago/prettier-plugin-sort-imports": "^6.0.2",
         "commitizen": "^4.3.1",
         "cross-env": "^10.1.0",
         "cz-conventional-changelog": "^3.3.0",
         "husky": "^9.1.7",
-        "prettier": "^3.8.3",
-        "prettier-plugin-tailwindcss": "^0.7.2",
         "turbo": "^2.9.6",
         "typescript": "6.0.3"
     },

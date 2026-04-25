@@ -22,10 +22,11 @@ const getEnvFilePath = (): string => {
 const envPath = getEnvFilePath();
 dotenv.config({ path: envPath });
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 const validateEnv = <T extends z.ZodType<any>>(schema: T, schemaName: string): z.infer<T> => {
     const validationResult = schema.safeParse(process.env);
 
-    if (validationResult.success === false) {
+    if (!validationResult.success) {
         console.error(
             `❌ Invalid environment variables for [${schemaName}]:`,
             JSON.stringify(z.treeifyError(validationResult.error), null, 2),

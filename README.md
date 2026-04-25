@@ -10,7 +10,7 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 
 ### Apps
 
-- **`web`**: Next.js 15 + React 19 app with TypeScript, Tailwind CSS v4, Jest, and Playwright
+- **`web`**: Next.js 16 + React 19 app with TypeScript, Tailwind CSS v4, Jest, and Playwright
 - **`api`**: NestJS 11 API with TypeScript, TypeORM, Jest, and Supertest
 
 ### Packages
@@ -18,7 +18,6 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 - **`@repo/design-system`**: Shared UI components and utilities (Tailwind CSS + shadcn/ui)
 - **`@repo/env`**: Centralized environment variable validation with Zod
 - **`@repo/database-typeorm`**: TypeORM DataSource configuration and migrations
-- **`@repo/eslint`**: Shared ESLint configurations (base, Next.js, NestJS)
 - **`@repo/jest`**: Shared Jest configurations for testing
 - **`@repo/playwright`**: Shared Playwright configuration for E2E tests
 - **`@repo/typescript`**: Shared TypeScript configurations
@@ -32,7 +31,7 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 - **Styling**: Tailwind CSS v4
 - **Database**: TypeORM + PostgreSQL
 - **Testing**: Jest, Playwright, Supertest
-- **Linting/Formatting**: ESLint 9, Prettier
+- **Linting/Formatting**: Biome
 - **Git hooks**: Husky + Commitlint
 - **Containerization**: Docker + Docker Compose
 
@@ -92,7 +91,6 @@ fullstack-monorepo-template/
 │  ├─ env/              # Environment validation
 │  ├─ database-typeorm/ # TypeORM configuration
 │  └─ config/           # Shared configurations
-│     ├─ eslint/
 │     ├─ jest/
 │     ├─ playwright/
 │     ├─ typescript/
@@ -110,8 +108,8 @@ fullstack-monorepo-template/
 ```bash
 pnpm dev                # Run all apps in dev mode
 pnpm build              # Build all apps and packages
-pnpm lint               # Lint all apps and packages
-pnpm format             # Format and fix all files
+pnpm lint               # Check lint and formatting across all apps and packages
+pnpm lint:fix           # Fix lint and formatting across all apps and packages
 pnpm typecheck          # Type-check all TypeScript files
 ```
 
@@ -154,6 +152,6 @@ This monorepo uses **pnpm workspaces** with the `workspace:*` protocol for inter
 
 1. Create a new branch from `main`
 2. Make your changes
-3. Run `pnpm format`
+3. Run `pnpm lint:fix`
 4. Commit using `pnpm commit` (or follows Conventional Commits)
 5. Create a Pull Request

@@ -5,15 +5,12 @@
     "private": true,
     "scripts": {
         "build": "tsup",
-        "lint": "eslint",
-        "lint:fix": "eslint --fix",
-        "prettier:fix": "prettier --write .",
-        "format": "pnpm lint:fix && pnpm prettier:fix",
+        "lint": "biome check .",
+        "lint:fix": "biome check --write .",
+        "lint:fix:unsafe": "biome check --write --unsafe .",
         "typecheck": "tsc --noEmit"
     },
-    "files": [
-        "dist"
-    ],
+    "files": ["dist"],
     "exports": {
         "./components": {
             "types": "./dist/components/index.d.ts",
@@ -40,13 +37,11 @@
         "tailwind-merge": "^3.5.0"
     },
     "devDependencies": {
-        "@repo/eslint": "workspace:*",
         "@repo/tsup": "workspace:*",
         "@repo/typescript": "workspace:*",
         "@tailwindcss/postcss": "^4.2.4",
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
-        "eslint": "^10.2.1",
         "react": "^19.2.5",
         "react-dom": "^19.2.5",
         "tailwindcss": "^4.2.4",

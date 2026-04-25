@@ -3,11 +3,12 @@
     "version": "1.0.0",
     "type": "module",
     "private": true,
-    "files": [
-        "dist"
-    ],
+    "files": ["dist"],
     "scripts": {
         "build": "tsup",
+        "lint": "biome check .",
+        "lint:fix": "biome check --write .",
+        "lint:fix:unsafe": "biome check --write --unsafe .",
         "typeorm:tsx": "tsx ./node_modules/typeorm/cli.js",
         "migrate:up": "pnpm typeorm:tsx migration:run -d ./src/data-source.ts",
         "migrate:down": "pnpm typeorm:tsx migration:revert -d ./src/data-source.ts",
@@ -29,7 +30,6 @@
         "typeorm": "^0.3.28"
     },
     "devDependencies": {
-        "@repo/eslint": "workspace:*",
         "@repo/tsup": "workspace:*",
         "@repo/typescript": "workspace:*",
         "@swc/core": "^1.15.30",

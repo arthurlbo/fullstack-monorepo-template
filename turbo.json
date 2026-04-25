@@ -37,6 +37,7 @@
         },
         "lint": {},
         "lint:fix": {},
+        "lint:fix:unsafe": {},
         "prettier:fix": {},
         "format": {},
         "typecheck": {},
