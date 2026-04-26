@@ -5,7 +5,7 @@ export const baseConfig: PlaywrightTestConfig = {
     timeout: 30 * 1000,
     fullyParallel: true,
     reporter: "list",
-    outputDir: "/dev/null",
+    outputDir: "/tmp/playwright-output",
     use: {
         baseURL: "http://localhost:3000",
         headless: true,

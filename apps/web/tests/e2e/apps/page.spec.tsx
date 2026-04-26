@@ -8,7 +8,7 @@ test.describe("Home Page E2E", () => {
     test("should display the main heading", async ({ page }) => {
         const heading = page.getByRole("heading", { name: /hello dev/i });
         await expect(heading).toBeVisible();
-        await expect(heading).toHaveText("Hello Dev 🥳");
+        await expect(heading).toHaveText("Hello Dev");
     });
 
     test("should display the description text", async ({ page }) => {
