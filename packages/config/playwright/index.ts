@@ -1,11 +1,11 @@
-import { PlaywrightTestConfig, devices } from "@playwright/test";
+import { type PlaywrightTestConfig, devices } from "@playwright/test";
 
 export const baseConfig: PlaywrightTestConfig = {
     testDir: "./tests/e2e",
     timeout: 30 * 1000,
     fullyParallel: true,
     reporter: "list",
-    outputDir: "/dev/null",
+    outputDir: "/tmp/playwright-output",
     use: {
         baseURL: "http://localhost:3000",
         headless: true,

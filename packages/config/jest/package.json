@@ -3,11 +3,12 @@
     "version": "1.0.0",
     "type": "module",
     "private": true,
-    "files": [
-        "dist"
-    ],
+    "files": ["dist"],
     "scripts": {
-        "build": "tsup"
+        "build": "tsup",
+        "lint": "biome check .",
+        "lint:fix": "biome check --write .",
+        "lint:fix:unsafe": "biome check --write --unsafe ."
     },
     "exports": {
         "./base": {
@@ -39,6 +40,6 @@
         "@repo/typescript": "workspace:*",
         "@types/jest": "^30.0.0",
         "tsup": "^8.5.1",
-        "typescript": "^5.9.3"
+        "typescript": "^6.0.3"
     }
 }

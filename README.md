@@ -10,15 +10,14 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 
 ### Apps
 
-- **`web`**: Next.js 15 + React 19 app with TypeScript, Tailwind CSS v4, Jest, and Playwright
-- **`api`**: NestJS 11 API with TypeScript, TypeORM, Jest, and Supertest
+- **`web`**: Next.js 16 + React 19 app with TypeScript, Tailwind CSS v4, Jest, and Playwright
+- **`api`**: NestJS 11 API with TypeScript, TypeORM, Helmet, Compression, Jest, and Supertest
 
 ### Packages
 
 - **`@repo/design-system`**: Shared UI components and utilities (Tailwind CSS + shadcn/ui)
 - **`@repo/env`**: Centralized environment variable validation with Zod
 - **`@repo/database-typeorm`**: TypeORM DataSource configuration and migrations
-- **`@repo/eslint`**: Shared ESLint configurations (base, Next.js, NestJS)
 - **`@repo/jest`**: Shared Jest configurations for testing
 - **`@repo/playwright`**: Shared Playwright configuration for E2E tests
 - **`@repo/typescript`**: Shared TypeScript configurations
@@ -27,12 +26,12 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 ## Tech Stack
 
 - **Monorepo**: pnpm workspaces + Turbo
-- **Frontend**: Next.js 15, React 19, TypeScript
+- **Frontend**: Next.js 16, React 19, TypeScript
 - **Backend**: NestJS, TypeScript
 - **Styling**: Tailwind CSS v4
 - **Database**: TypeORM + PostgreSQL
 - **Testing**: Jest, Playwright, Supertest
-- **Linting/Formatting**: ESLint 9, Prettier
+- **Linting/Formatting**: Biome
 - **Git hooks**: Husky + Commitlint
 - **Containerization**: Docker + Docker Compose
 
@@ -40,8 +39,8 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 
 ### Prerequisites
 
-- Node.js >= 20
-- pnpm 10.18.2 (or higher)
+- Node.js >= 22
+- pnpm >= 10.26.2
 - Docker (optional, for containerized development)
 
 ### Installation
@@ -85,14 +84,13 @@ Open <http://localhost:3000> for the web app and <http://localhost:3001> for the
 ```text
 fullstack-monorepo-template/
 ├─ apps/
-│  ├─ web/              # Next.js 15 + React 19 app
+│  ├─ web/              # Next.js 16 + React 19 app
 │  └─ api/              # NestJS 11 API
 ├─ packages/
 │  ├─ design-system/    # UI components and utilities
 │  ├─ env/              # Environment validation
 │  ├─ database-typeorm/ # TypeORM configuration
 │  └─ config/           # Shared configurations
-│     ├─ eslint/
 │     ├─ jest/
 │     ├─ playwright/
 │     ├─ typescript/
@@ -110,9 +108,26 @@ fullstack-monorepo-template/
 ```bash
 pnpm dev                # Run all apps in dev mode
 pnpm build              # Build all apps and packages
-pnpm lint               # Lint all apps and packages
-pnpm format             # Format and fix all files
+pnpm lint               # Check lint and formatting across all apps and packages
+pnpm lint:fix           # Fix lint and formatting across all apps and packages
+pnpm lint:fix:unsafe    # Fix lint and formatting (including unsafe fixes)
 pnpm typecheck          # Type-check all TypeScript files
+```
+
+### Start (built apps)
+
+```bash
+pnpm start:dev          # Start all built apps (development env)
+pnpm start:staging      # Start all built apps (staging env)
+pnpm start:production   # Start all built apps (production env)
+```
+
+### Testing
+
+```bash
+pnpm test:unit          # Run unit tests across all apps
+pnpm test:e2e           # Run end-to-end tests across all apps
+pnpm test:all           # Run all tests across all apps
 ```
 
 ### Docker
@@ -154,6 +169,7 @@ This monorepo uses **pnpm workspaces** with the `workspace:*` protocol for inter
 
 1. Create a new branch from `main`
 2. Make your changes
-3. Run `pnpm format`
-4. Commit using `pnpm commit` (or follows Conventional Commits)
-5. Create a Pull Request
+3. Run `pnpm lint:fix` and `pnpm typecheck`
+4. Run `pnpm test:all` to verify nothing is broken
+5. Commit using `pnpm commit` (follows Conventional Commits)
+6. Create a Pull Request

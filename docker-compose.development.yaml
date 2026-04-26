@@ -9,10 +9,18 @@ services:
             POSTGRES_DB: ${DB_DATABASE}
         ports:
             - "${DB_PORT}:5432"
+        env_file:
+            - .env.development
         volumes:
             - postgres_db_vol:/var/lib/postgresql/data
         networks:
             - dev-net
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_period: 20s
 
 volumes:
     postgres_db_vol: {}

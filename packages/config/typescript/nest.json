@@ -11,8 +11,6 @@
         "outDir": "./dist",
         "incremental": true,
         "strictNullChecks": true,
-        "noImplicitAny": false,
-        "strictBindCallApply": false,
-        "noFallthroughCasesInSwitch": false,
+        "noFallthroughCasesInSwitch": false
     }
 }

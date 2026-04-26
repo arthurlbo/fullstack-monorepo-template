@@ -1,6 +1,6 @@
 "use client";
 
-import { ComponentProps, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 import { AppProgressProvider } from "@bprogress/next";
 import { ThemeProvider } from "next-themes";

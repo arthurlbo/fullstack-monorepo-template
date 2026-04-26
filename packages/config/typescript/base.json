@@ -15,6 +15,7 @@
         "skipLibCheck": true,
         "strict": true,
         "forceConsistentCasingInFileNames": true,
-        "target": "ES2023"
+        "target": "ES2023",
+        "ignoreDeprecations": "6.0"
     }
 }

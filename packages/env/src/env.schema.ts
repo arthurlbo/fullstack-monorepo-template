@@ -38,6 +38,10 @@ export const apiSchema = z.object({
             error: "You forgot to set the API_PORT variable",
         })
         .describe("Port for the API application"),
+    ALLOWED_ORIGINS: z
+        .string()
+        .default("http://localhost:3000")
+        .describe("Comma-separated list of allowed CORS origins"),
 });
 
 export const webSchema = z.object({

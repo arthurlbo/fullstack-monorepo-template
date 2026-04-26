@@ -1,44 +1,40 @@
 # Build stage
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 
-# Install pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN corepack enable && corepack prepare pnpm@10.26.2 --activate
 
 WORKDIR /app
 
-# Copy workspace files
-COPY .prettierrc.json pnpm-workspace.yaml pnpm-lock.yaml package.json turbo.json tsconfig.json ./
+COPY biome.json pnpm-workspace.yaml pnpm-lock.yaml package.json turbo.json tsconfig.json ./
 COPY packages ./packages
 COPY apps/api ./apps/api
 
-# Install dependencies
 RUN pnpm install --frozen-lockfile
 
-# Build shared packages first
-RUN pnpm --filter "@repo/*" --filter "!@repo/tsconfig" build
-
-# Build the API
-RUN pnpm --filter api build
+RUN pnpm turbo build --filter="api..."
 
 # Production stage
-FROM node:20-alpine AS runner
+FROM node:22-alpine AS runner
 
-# Install pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN corepack enable && corepack prepare pnpm@10.26.2 --activate
 
 WORKDIR /app
 
-# Set environment
 ENV NODE_ENV=production
 
-# Copy everything from builder
+RUN addgroup --system --gid 1001 nodejs \
+    && adduser --system --uid 1001 nestjs
+
 COPY --from=builder /app ./
 
-# Install production dependencies only
-RUN pnpm --filter api install --frozen-lockfile
+RUN pnpm prune --prod \
+    && chown -R nestjs:nodejs /app
 
-# Expose port
+USER nestjs
+
 EXPOSE 3001
 
-# Start the application
-CMD ["pnpm", "--filter", "api", "start:prod"]
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+    CMD wget -qO- http://localhost:3001/health || exit 1
+
+CMD ["node", "apps/api/dist/main.js"]
