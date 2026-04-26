@@ -11,7 +11,7 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 ### Apps
 
 - **`web`**: Next.js 16 + React 19 app with TypeScript, Tailwind CSS v4, Jest, and Playwright
-- **`api`**: NestJS 11 API with TypeScript, TypeORM, Jest, and Supertest
+- **`api`**: NestJS 11 API with TypeScript, TypeORM, Helmet, Compression, Jest, and Supertest
 
 ### Packages
 
@@ -26,7 +26,7 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 ## Tech Stack
 
 - **Monorepo**: pnpm workspaces + Turbo
-- **Frontend**: Next.js 15, React 19, TypeScript
+- **Frontend**: Next.js 16, React 19, TypeScript
 - **Backend**: NestJS, TypeScript
 - **Styling**: Tailwind CSS v4
 - **Database**: TypeORM + PostgreSQL
@@ -39,8 +39,8 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 
 ### Prerequisites
 
-- Node.js >= 20
-- pnpm 10.18.2 (or higher)
+- Node.js >= 22
+- pnpm >= 10.26.2
 - Docker (optional, for containerized development)
 
 ### Installation
@@ -84,7 +84,7 @@ Open <http://localhost:3000> for the web app and <http://localhost:3001> for the
 ```text
 fullstack-monorepo-template/
 ├─ apps/
-│  ├─ web/              # Next.js 15 + React 19 app
+│  ├─ web/              # Next.js 16 + React 19 app
 │  └─ api/              # NestJS 11 API
 ├─ packages/
 │  ├─ design-system/    # UI components and utilities
@@ -110,7 +110,24 @@ pnpm dev                # Run all apps in dev mode
 pnpm build              # Build all apps and packages
 pnpm lint               # Check lint and formatting across all apps and packages
 pnpm lint:fix           # Fix lint and formatting across all apps and packages
+pnpm lint:fix:unsafe    # Fix lint and formatting (including unsafe fixes)
 pnpm typecheck          # Type-check all TypeScript files
+```
+
+### Start (built apps)
+
+```bash
+pnpm start:dev          # Start all built apps (development env)
+pnpm start:staging      # Start all built apps (staging env)
+pnpm start:production   # Start all built apps (production env)
+```
+
+### Testing
+
+```bash
+pnpm test:unit          # Run unit tests across all apps
+pnpm test:e2e           # Run end-to-end tests across all apps
+pnpm test:all           # Run all tests across all apps
 ```
 
 ### Docker
@@ -152,6 +169,7 @@ This monorepo uses **pnpm workspaces** with the `workspace:*` protocol for inter
 
 1. Create a new branch from `main`
 2. Make your changes
-3. Run `pnpm lint:fix`
-4. Commit using `pnpm commit` (or follows Conventional Commits)
-5. Create a Pull Request
+3. Run `pnpm lint:fix` and `pnpm typecheck`
+4. Run `pnpm test:all` to verify nothing is broken
+5. Commit using `pnpm commit` (follows Conventional Commits)
+6. Create a Pull Request

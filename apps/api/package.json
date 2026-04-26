@@ -1,10 +1,10 @@
 {
     "name": "api",
     "version": "1.0.0",
-    "description": "",
-    "author": "",
+    "description": "NestJS 11 API — part of the fullstack monorepo template",
+    "author": "Arthur Lobo",
     "private": true,
-    "license": "UNLICENSED",
+    "license": "MIT",
     "scripts": {
         "dev": "nest start --watch",
         "dev:debug": "nest start --debug --watch",

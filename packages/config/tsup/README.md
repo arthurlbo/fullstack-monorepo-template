@@ -1,18 +1,26 @@
 # `@repo/tsup`
 
-Shared Tsup configuration package for the monorepo.
+Shared tsup configuration package for the monorepo.
 
 ## Overview
 
-This package provides a centralized Tsup configuration for building TypeScript projects in the monorepo, ensuring consistent build settings across all apps in the workspace.
+This package provides a centralized tsup base configuration for building TypeScript packages, ensuring consistent build output (ESM + CJS + type declarations) across all packages in the workspace.
 
-### Build
+## Usage
 
-```bash
-pnpm --filter @repo/tsup build
+In your `tsup.config.ts`:
+
+```ts
+import { defineConfig } from "tsup";
+import baseConfig from "@repo/tsup";
+
+export default defineConfig({
+    ...baseConfig,
+    entry: ["src/index.ts"],
+});
 ```
 
-### Installation
+## Installation
 
 This package is already part of the workspace. To use it in your app:
 

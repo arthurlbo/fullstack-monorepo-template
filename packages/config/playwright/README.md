@@ -4,15 +4,27 @@ Shared Playwright configuration package for the monorepo.
 
 ## Overview
 
-This package provides a centralized Playwright configuration for end-to-end testing in the monorepo, ensuring consistent test settings across all apps in the workspace.
+This package provides a centralized Playwright base configuration for end-to-end testing, ensuring consistent settings across all apps in the workspace.
 
-### Build
+## Usage
 
-```bash
-pnpm --filter @repo/playwright build
+In your `playwright.config.ts`:
+
+```ts
+import { defineConfig } from "@playwright/test";
+import baseConfig from "@repo/playwright";
+
+export default defineConfig({
+    ...baseConfig,
+    testDir: "./tests/e2e",
+    use: {
+        ...baseConfig.use,
+        baseURL: "http://localhost:3000",
+    },
+});
 ```
 
-### Installation
+## Installation
 
 This package is already part of the workspace. To use it in your app:
 
@@ -22,4 +34,10 @@ This package is already part of the workspace. To use it in your app:
         "@repo/playwright": "workspace:*"
     }
 }
+```
+
+## Build
+
+```bash
+pnpm --filter @repo/playwright build
 ```
