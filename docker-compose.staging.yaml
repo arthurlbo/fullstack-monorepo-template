@@ -15,6 +15,12 @@ services:
             - postgres_db_vol:/var/lib/postgresql/data
         networks:
             - staging-net
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_period: 20s
 
     api:
         container_name: api_staging
@@ -27,9 +33,16 @@ services:
         env_file:
             - .env.staging
         depends_on:
-            - postgres
+            postgres:
+                condition: service_healthy
         networks:
             - staging-net
+        healthcheck:
+            test: ["CMD-SHELL", "wget -qO- http://localhost:3001/health || exit 1"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 30s
 
     web:
         container_name: web_staging
@@ -41,6 +54,9 @@ services:
             - "${WEB_PORT}:3000"
         env_file:
             - .env.staging
+        depends_on:
+            api:
+                condition: service_healthy
         networks:
             - staging-net
 

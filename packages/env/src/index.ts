@@ -22,7 +22,7 @@ const getEnvFilePath = (): string => {
 const envPath = getEnvFilePath();
 dotenv.config({ path: envPath });
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+// biome-ignore lint/suspicious/noExplicitAny: zod generic requires any
 const validateEnv = <T extends z.ZodType<any>>(schema: T, schemaName: string): z.infer<T> => {
     const validationResult = schema.safeParse(process.env);
 
@@ -37,7 +37,24 @@ const validateEnv = <T extends z.ZodType<any>>(schema: T, schemaName: string): z
     return validationResult.data;
 };
 
-export const globalEnv = validateEnv(globalSchema, "global");
-export const databaseEnv = validateEnv(databaseSchema, "database");
-export const apiEnv = validateEnv(apiSchema, "api");
-export const webEnv = validateEnv(webSchema, "web");
+// Each env object is lazily validated on first property access.
+// This prevents a service from failing at startup due to missing
+// variables that belong to a different service.
+const createLazy = <T extends object>(factory: () => T): T => {
+    let cache: T | undefined;
+    return new Proxy({} as T, {
+        get(_, key) {
+            if (!cache) cache = factory();
+            return cache[key as keyof T];
+        },
+        has(_, key) {
+            if (!cache) cache = factory();
+            return key in cache;
+        },
+    });
+};
+
+export const globalEnv = createLazy(() => validateEnv(globalSchema, "global"));
+export const databaseEnv = createLazy(() => validateEnv(databaseSchema, "database"));
+export const apiEnv = createLazy(() => validateEnv(apiSchema, "api"));
+export const webEnv = createLazy(() => validateEnv(webSchema, "web"));

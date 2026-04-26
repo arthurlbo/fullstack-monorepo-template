@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 export default function Home() {
     return (
         <main className="flex flex-col items-center gap-6 text-center text-primary-100">
-            <h1 className="font-bold text-2xl">Hello Dev 🥳</h1>
+            <h1 className="font-bold text-2xl">Hello Dev</h1>
 
             <p className="max-w-md">
                 This is a modern Full-stack monorepo template designed to accelerate your web development workflow.

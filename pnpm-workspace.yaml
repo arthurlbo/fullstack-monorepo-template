@@ -6,6 +6,7 @@ packages:
 onlyBuiltDependencies:
   - '@biomejs/biome'
   - '@nestjs/core'
+  - '@scarf/scarf'
   - '@swc/core'
   - '@tailwindcss/oxide'
   - esbuild

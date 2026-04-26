@@ -7,15 +7,7 @@
     },
     "files": {
         "ignoreUnknown": false,
-        "ignore": [
-            "node_modules/**",
-            "dist/**",
-            "build/**",
-            "coverage/**",
-            ".next/**",
-            "out/**",
-            "next-env.d.ts"
-        ]
+        "ignore": ["node_modules/**", "dist/**", "build/**", "coverage/**", ".next/**", "out/**", "next-env.d.ts"]
     },
     "formatter": {
         "enabled": true,
@@ -49,6 +41,7 @@
                 }
             },
             "style": {
+                "useImportType": "off",
                 "useNamingConvention": {
                     "level": "error",
                     "options": {

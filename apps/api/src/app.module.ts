@@ -3,17 +3,14 @@ import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { AppDataSource } from "@repo/database-typeorm";
-import { apiEnv, globalEnv } from "@repo/env";
 
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { HealthModule } from "./health/health.module";
 
 @Module({
     imports: [
-        ConfigModule.forRoot({
-            isGlobal: true,
-            load: [() => globalEnv, () => apiEnv],
-        }),
+        ConfigModule.forRoot({ isGlobal: true, ignoreEnvFile: true }),
         TypeOrmModule.forRootAsync({
             useFactory: () => AppDataSource.options,
             dataSourceFactory: async () => {
@@ -24,6 +21,7 @@ import { AppService } from "./app.service";
                 return AppDataSource;
             },
         }),
+        HealthModule,
     ],
     controllers: [AppController],
     providers: [AppService],

@@ -21,6 +21,9 @@
         "lint:fix": "turbo run lint:fix",
         "lint:fix:unsafe": "turbo run lint:fix:unsafe",
         "typecheck": "turbo run typecheck",
+        "test:unit": "turbo run test:unit",
+        "test:e2e": "turbo run test:e2e",
+        "test:all": "turbo run test:all",
         "migrate:up:dev": "pnpm env::dev pnpm migrate::up",
         "migrate:down:dev": "pnpm env::dev pnpm migrate::down",
         "clear:db:dev": "pnpm env::dev pnpm clear::db",
@@ -43,12 +46,16 @@
         "cross-env": "^10.1.0",
         "cz-conventional-changelog": "^3.3.0",
         "husky": "^9.1.7",
+        "lint-staged": "^16.1.0",
         "turbo": "^2.9.6",
         "typescript": "6.0.3"
     },
+    "lint-staged": {
+        "**/*.{ts,tsx,js,jsx,json}": "biome check --write"
+    },
     "packageManager": "pnpm@10.26.2",
     "engines": {
-        "node": ">=20"
+        "node": ">=22"
     },
     "config": {
         "commitizen": {
