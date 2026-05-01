@@ -20,15 +20,20 @@ This package provides centralized Jest presets for unit testing across all apps,
 In your `jest.config.ts`:
 
 ```ts
-import type { Config } from "jest";
-import baseConfig from "@repo/jest/nest";
+import { nestConfig } from "@repo/jest/nest";
 
-const config: Config = {
-    ...baseConfig,
-    rootDir: ".",
-};
+export default nestConfig;
+```
 
-export default config;
+For Next.js apps:
+
+```ts
+import nextJest from "next/jest.js";
+import { nextConfig } from "@repo/jest/next";
+
+const createJestConfig = nextJest({ dir: "./" });
+
+export default createJestConfig(nextConfig);
 ```
 
 ## Installation

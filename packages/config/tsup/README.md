@@ -11,8 +11,8 @@ This package provides a centralized tsup base configuration for building TypeScr
 In your `tsup.config.ts`:
 
 ```ts
+import { baseConfig } from "@repo/tsup";
 import { defineConfig } from "tsup";
-import baseConfig from "@repo/tsup";
 
 export default defineConfig({
     ...baseConfig,
