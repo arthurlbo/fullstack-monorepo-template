@@ -21,19 +21,12 @@
             "persistent": true,
             "dependsOn": ["build"]
         },
-        "migrate:up": {
-            "cache": false
-        },
-        "migrate:down": {
-            "cache": false
-        },
-        "clear:db": {
-            "cache": false
-        },
         "lint": {},
         "lint:fix": {},
         "lint:fix:unsafe": {},
-        "typecheck": { "dependsOn": ["^build"] },
+        "typecheck": {
+            "dependsOn": ["^build"]
+        },
         "test:unit": {
             "dependsOn": ["^build"],
             "inputs": ["$TURBO_DEFAULT$"],
