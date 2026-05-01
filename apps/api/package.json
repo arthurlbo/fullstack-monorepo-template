@@ -18,7 +18,12 @@
         "test:unit:coverage": "jest --coverage",
         "test:unit:watch": "jest --watch",
         "test:e2e": "jest --config jest-e2e.config.js",
-        "test:all": "pnpm test:unit && pnpm test:e2e"
+        "test:all": "pnpm test:unit && pnpm test:e2e",
+        "typeorm:tsx": "tsx ./node_modules/typeorm/cli.js",
+        "migrate:generate": "pnpm typeorm:tsx migration:generate -d ./src/infra/database/data-source.ts",
+        "migrate:up": "pnpm typeorm:tsx migration:run -d ./src/infra/database/data-source.ts",
+        "migrate:down": "pnpm typeorm:tsx migration:revert -d ./src/infra/database/data-source.ts",
+        "clear:db": "pnpm typeorm:tsx schema:drop -d ./src/infra/database/data-source.ts"
     },
     "dependencies": {
         "@nestjs/common": "^11.1.19",
@@ -28,23 +33,25 @@
         "@nestjs/swagger": "^11.2.0",
         "@nestjs/terminus": "^11.0.0",
         "@nestjs/typeorm": "^11.0.1",
-        "compression": "^1.8.0",
-        "helmet": "^8.0.0",
-        "@repo/database-typeorm": "workspace:*",
+        "@repo/contracts": "workspace:*",
         "@repo/env": "workspace:*",
         "class-transformer": "^0.5.1",
         "class-validator": "^0.14.1",
+        "compression": "^1.8.0",
+        "helmet": "^8.0.0",
+        "pg": "^8.20.0",
         "reflect-metadata": "^0.2.2",
         "rxjs": "^7.8.2",
-        "typeorm": "^0.3.28"
+        "typeorm": "^0.3.28",
+        "zod": "^4.3.6"
     },
     "devDependencies": {
         "@nestjs/cli": "^11.0.21",
         "@nestjs/schematics": "^11.1.0",
         "@nestjs/testing": "^11.1.19",
-        "@types/compression": "^1.7.5",
         "@repo/jest": "workspace:*",
         "@repo/typescript": "workspace:*",
+        "@types/compression": "^1.7.5",
         "@types/express": "^5.0.6",
         "@types/jest": "^30.0.0",
         "@types/node": "^25.6.0",
@@ -56,6 +63,7 @@
         "ts-loader": "^9.5.7",
         "ts-node": "^10.9.2",
         "tsconfig-paths": "^4.2.0",
+        "tsx": "^4.21.0",
         "typescript": "^6.0.3"
     }
 }

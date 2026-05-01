@@ -4,20 +4,20 @@
 
 ## Overview
 
-This is a comprehensive monorepo template built with **pnpm workspaces** and **Turbo** for efficient builds and task orchestration. It provides a solid foundation for building scalable Full-stack applications with shared configuration, design systems, and utilities.
+This is a comprehensive monorepo template built with **pnpm workspaces** and **Turbo** for efficient builds and task orchestration. It provides a solid foundation for building scalable Full-stack applications with shared configuration, design systems, validation schemas, and utilities.
 
 ## What's inside?
 
 ### Apps
 
 - **`web`**: Next.js 16 + React 19 app with TypeScript, Tailwind CSS v4, Jest, and Playwright
-- **`api`**: NestJS 11 API with TypeScript, TypeORM, Helmet, Compression, Jest, and Supertest
+- **`api`**: NestJS 11 API with TypeScript, TypeORM, Zod, Helmet, Compression, Jest, and Supertest
 
 ### Packages
 
 - **`@repo/design-system`**: Shared UI primitives (Tailwind CSS + shadcn/ui)
 - **`@repo/env`**: Centralized environment variable validation with Zod
-- **`@repo/database-typeorm`**: TypeORM DataSource configuration and migrations
+- **`@repo/contracts`**: Shared Zod schemas and inferred TypeScript types (validation contracts between web and API)
 - **`@repo/jest`**: Shared Jest configurations for testing
 - **`@repo/playwright`**: Shared Playwright configuration for E2E tests
 - **`@repo/typescript`**: Shared TypeScript configurations
@@ -27,9 +27,10 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 
 - **Monorepo**: pnpm workspaces + Turbo
 - **Frontend**: Next.js 16, React 19, TypeScript
-- **Backend**: NestJS, TypeScript
 - **Styling**: Tailwind CSS v4
+- **Backend**: NestJS 11, TypeScript
 - **Database**: TypeORM + PostgreSQL
+- **Validation**: Zod (shared schemas via `@repo/contracts`)
 - **Testing**: Jest, Playwright, Supertest
 - **Linting/Formatting**: Biome
 - **Git hooks**: Husky + Commitlint
@@ -65,11 +66,11 @@ Open <http://localhost:3000> for the web app and <http://localhost:3001> for the
 fullstack-monorepo-template/
 ├── apps/
 │   ├── web/                # Next.js 16 + React 19
-│   ├── api/                # NestJS 11
+│   └── api/                # NestJS 11
 ├── packages/
+│   ├── contracts/          # Shared Zod schemas and TypeScript types
 │   ├── design-system/      # UI primitives
 │   ├── env/                # Environment validation
-│   ├── database-typeorm/   # TypeORM configuration
 │   └── config/             # Shared configurations
 │       ├── jest/
 │       ├── playwright/
@@ -110,20 +111,24 @@ pnpm test:e2e           # End-to-end tests across all apps
 pnpm test:all           # All tests across all apps
 ```
 
+### Database
+
+```bash
+pnpm migrate:generate:dev       # Generate a new migration file (development)
+pnpm migrate:up:dev             # Run pending migrations (development)
+pnpm migrate:up:staging         # Run pending migrations (staging)
+pnpm migrate:up:production      # Run pending migrations (production)
+pnpm migrate:down:dev           # Revert last migration (development)
+pnpm migrate:down:staging       # Revert last migration (staging)
+pnpm clear:db:dev               # Drop all tables (development)
+```
+
 ### Docker
 
 ```bash
 pnpm docker:dev         # Start development environment
 pnpm docker:staging     # Start staging environment
 pnpm docker:production  # Start production environment
-```
-
-### Database
-
-```bash
-pnpm migrate:up:dev     # Run migrations (development)
-pnpm migrate:down:dev   # Revert migrations (development)
-pnpm clear:db:dev       # Clear database (development)
 ```
 
 ### Git

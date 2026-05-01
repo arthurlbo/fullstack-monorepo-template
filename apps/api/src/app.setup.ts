@@ -1,7 +1,7 @@
 import compression from "compression";
 import helmet from "helmet";
 
-import { type INestApplication, ValidationPipe, VersioningType } from "@nestjs/common";
+import { type INestApplication, VersioningType } from "@nestjs/common";
 
 export function setupApp(app: INestApplication): void {
     app.use(helmet());
@@ -13,12 +13,4 @@ export function setupApp(app: INestApplication): void {
         type: VersioningType.URI,
         defaultVersion: "1",
     });
-
-    app.useGlobalPipes(
-        new ValidationPipe({
-            whitelist: true,
-            forbidNonWhitelisted: true,
-            transform: true,
-        }),
-    );
 }
