@@ -6,5 +6,14 @@
         "outDir": "./dist",
         "tsBuildInfoFile": "./dist/tsconfig.build.tsbuildinfo"
     },
-    "exclude": ["node_modules", "test", "dist", "**/*.spec.ts", "**/*.test.ts", "jest.config.ts", "jest.setup.ts"]
+    "exclude": [
+        "node_modules",
+        "test",
+        "dist",
+        "**/*.spec.ts",
+        "**/*.test.ts",
+        "vitest.config.ts",
+        "vitest-e2e.config.ts",
+        "vitest.setup.ts"
+    ]
 }

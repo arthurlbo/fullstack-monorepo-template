@@ -1,5 +1,5 @@
 {
-    "name": "@repo/jest",
+    "name": "@repo/vitest",
     "version": "1.0.0",
     "type": "module",
     "private": true,
@@ -32,14 +32,20 @@
             "require": "./dist/nest-e2e.cjs"
         }
     },
+    "dependencies": {
+        "@vitejs/plugin-react": "^4.5.2",
+        "unplugin-swc": "^1.4.0",
+        "vite-tsconfig-paths": "^5.1.4"
+    },
     "peerDependencies": {
-        "jest": "^30.2.0"
+        "@swc/core": "^1.0.0",
+        "vitest": "^3.0.0"
     },
     "devDependencies": {
         "@repo/tsup": "workspace:*",
         "@repo/typescript": "workspace:*",
-        "@types/jest": "^30.0.0",
         "tsup": "^8.5.1",
-        "typescript": "^6.0.3"
+        "typescript": "^6.0.3",
+        "vitest": "^3.2.4"
     }
 }

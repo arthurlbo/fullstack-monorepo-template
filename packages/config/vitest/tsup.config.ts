@@ -5,5 +5,5 @@ export default defineConfig({
     ...baseConfig,
     entry: ["src/base.ts", "src/next.ts", "src/nest.ts", "src/nest-e2e.ts"],
     bundle: true,
-    external: ["jest"],
+    external: ["vitest", "vite", "@vitejs/plugin-react", "vite-tsconfig-paths", "unplugin-swc"],
 });

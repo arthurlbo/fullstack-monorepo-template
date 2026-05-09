@@ -1,4 +1,5 @@
 import { ConflictException } from "@nestjs/common";
+import type { Mocked } from "vitest";
 
 import type { User } from "../../../domain/entities/user.entity";
 import type { IUserRepository } from "../../../domain/repositories/user.repository";
@@ -13,15 +14,15 @@ const makeUser = (overrides: Partial<User> = {}): User => ({
     ...overrides,
 });
 
-const makeRepository = (): jest.Mocked<IUserRepository> => ({
-    findAll: jest.fn(),
-    findById: jest.fn(),
-    findByEmail: jest.fn(),
-    create: jest.fn(),
+const makeRepository = (): Mocked<IUserRepository> => ({
+    findAll: vi.fn(),
+    findById: vi.fn(),
+    findByEmail: vi.fn(),
+    create: vi.fn(),
 });
 
 describe("CreateUserUseCase", () => {
-    let repository: jest.Mocked<IUserRepository>;
+    let repository: Mocked<IUserRepository>;
     let sut: CreateUserUseCase;
 
     beforeEach(() => {

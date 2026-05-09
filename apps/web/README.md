@@ -6,7 +6,7 @@ This is the Next.js app in the monorepo.
 
 - Next.js 16 + React 19 + TypeScript
 - Tailwind CSS v4
-- Jest + Testing Library (unit tests)
+- Vitest + Testing Library (unit tests)
 - Playwright (end-to-end tests)
 - Dockerfile for containerized deployments
 
@@ -60,8 +60,8 @@ apps/web/
 ├─ tests/
 │  ├─ e2e/                            # Playwright tests
 │  └─ mocks/                          # Global mocks (next/navigation, next/image, etc.)
-├─ jest.config.ts
-├─ jest.setup.ts
+├─ vitest.config.ts
+├─ vitest.setup.ts
 ├─ playwright.config.ts
 ├─ next.config.ts
 └─ Dockerfile
@@ -125,5 +125,5 @@ Barrel files (`index.ts`) exist to define a **public API** — what a module exp
 
 | File | Type | Tool |
 |---|---|---|
-| `[file].test.ts(x)` | Unit / Component | Jest + Testing Library |
+| `[file].test.ts(x)` | Unit / Component | Vitest + Testing Library |
 | `[file].spec.ts(x)` | End-to-end | Playwright |

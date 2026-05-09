@@ -44,7 +44,7 @@
             "cache": false
         },
         "test:all": {
-            "dependsOn": ["test:unit", "test:e2e"],
+            "dependsOn": ["^build"],
             "cache": false
         }
     }

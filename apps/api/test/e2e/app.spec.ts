@@ -9,7 +9,7 @@ import { setupApp } from "@/app.setup";
 describe("App (e2e)", () => {
     let app: INestApplication<App>;
 
-    beforeEach(async () => {
+    beforeAll(async () => {
         const moduleFixture: TestingModule = await Test.createTestingModule({
             imports: [AppModule],
         }).compile();
@@ -19,7 +19,7 @@ describe("App (e2e)", () => {
         await app.init();
     });
 
-    afterEach(async () => {
+    afterAll(async () => {
         await app.close();
     });
 

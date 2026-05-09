@@ -9,6 +9,8 @@ import { dataSourceOptions } from "./data-source";
             useFactory: () => ({
                 ...dataSourceOptions,
                 autoLoadEntities: true,
+                entities: [], // globs in dataSourceOptions are for the TypeORM CLI only
+                migrations: [],
             }),
         }),
     ],

@@ -10,8 +10,8 @@ NestJS 11 API in the monorepo, following a DDD architecture.
 - Zod validation via `@repo/contracts` (shared schemas between API and web)
 - Helmet (security headers) + Compression
 - Swagger (API documentation, generated from Zod schemas)
-- Jest (unit tests)
-- Supertest (end-to-end tests)
+- Vitest (unit tests, with SWC for decorator metadata)
+- Vitest + Supertest (end-to-end tests)
 - Dockerfile for containerized deployments
 
 ## Getting Started
@@ -102,17 +102,18 @@ apps/api/
 │   └── shared/                        # pipes, utils, decorators, etc, used across multiple modules.
 │       ├── commons/
 │       ├── constants/
-│       ├── pipes/
-│       ├── utils/
 │       ├── decorators/
+│       ├── exceptions/
 │       ├── filters/
 │       ├── guards/
-│       └── interceptors/
+│       ├── interceptors/
+│       ├── pipes/
+│       └── utils/
 ├── test/
 │   └── e2e/                           # E2E tests (Supertest)
-├── jest.config.ts
-├── jest.setup.ts
-├── jest-e2e.config.js
+├── vitest.config.ts
+├── vitest.setup.ts
+├── vitest-e2e.config.ts
 └── Dockerfile
 ```
 

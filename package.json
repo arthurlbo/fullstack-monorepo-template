@@ -32,6 +32,7 @@
         "migrate:down:staging": "pnpm env::staging pnpm --filter=api migrate:down",
         "clear:db:dev": "pnpm env::dev pnpm --filter=api clear:db",
         "docker:dev": "docker compose -f docker-compose.development.yaml --env-file .env.development up -d",
+        "docker:test": "docker compose -f docker-compose.test.yaml --env-file .env.test up -d",
         "docker:staging": "docker compose -f docker-compose.staging.yaml --env-file .env.staging up -d",
         "docker:production": "docker compose -f docker-compose.production.yaml --env-file .env.production up -d",
         "env::dev": "cross-env NODE_ENV=development",

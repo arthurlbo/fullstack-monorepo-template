@@ -10,15 +10,15 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 
 ### Apps
 
-- **`web`**: Next.js 16 + React 19 app with TypeScript, Tailwind CSS v4, Jest, and Playwright
-- **`api`**: NestJS 11 API with TypeScript, TypeORM, Zod, Helmet, Compression, Jest, and Supertest
+- **`web`**: Next.js 16 + React 19 app with TypeScript, Tailwind CSS v4, Vitest, and Playwright
+- **`api`**: NestJS 11 API with TypeScript, TypeORM, Zod, Helmet, Compression, Vitest, and Supertest
 
 ### Packages
 
 - **`@repo/design-system`**: Shared UI primitives (Tailwind CSS + shadcn/ui)
 - **`@repo/env`**: Centralized environment variable validation with Zod
 - **`@repo/contracts`**: Shared Zod schemas and inferred TypeScript types (validation contracts between web and API)
-- **`@repo/jest`**: Shared Jest configurations for testing
+- **`@repo/vitest`**: Shared Vitest configurations for testing
 - **`@repo/playwright`**: Shared Playwright configuration for E2E tests
 - **`@repo/typescript`**: Shared TypeScript configurations
 - **`@repo/tsup`**: Shared tsup configuration for bundling packages
@@ -31,7 +31,7 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 - **Backend**: NestJS 11, TypeScript
 - **Database**: TypeORM + PostgreSQL
 - **Validation**: Zod (shared schemas via `@repo/contracts`)
-- **Testing**: Jest, Playwright, Supertest
+- **Testing**: Vitest, Playwright, Supertest
 - **Linting/Formatting**: Biome
 - **Git hooks**: Husky + Commitlint
 - **Containerization**: Docker + Docker Compose
@@ -72,7 +72,7 @@ fullstack-monorepo-template/
 │   ├── design-system/      # UI primitives
 │   ├── env/                # Environment validation
 │   └── config/             # Shared configurations
-│       ├── jest/
+│       ├── vitest/
 │       ├── playwright/
 │       ├── typescript/
 │       └── tsup/
@@ -127,6 +127,7 @@ pnpm clear:db:dev               # Drop all tables (development)
 
 ```bash
 pnpm docker:dev         # Start development environment
+pnpm docker:test        # Start test environment
 pnpm docker:staging     # Start staging environment
 pnpm docker:production  # Start production environment
 ```

@@ -1,6 +1,6 @@
-import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/vitest";
 
-Element.prototype.scrollIntoView = jest.fn();
+Element.prototype.scrollIntoView = vi.fn();
 global.structuredClone = (val: unknown) => JSON.parse(JSON.stringify(val));
 global.ResizeObserver = class ResizeObserver {
     observe() {}
