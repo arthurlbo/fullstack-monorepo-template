@@ -13,9 +13,10 @@
         "lint:fix": "biome check --write .",
         "lint:fix:unsafe": "biome check --write --unsafe .",
         "typecheck": "tsc --noEmit",
-        "test:unit": "jest --passWithNoTests",
-        "test:unit:coverage": "jest --coverage",
-        "test:unit:watch": "jest --watch",
+        "test:unit": "vitest run --passWithNoTests",
+        "test:unit:coverage": "vitest run --coverage",
+        "test:unit:watch": "vitest",
+        "pretest:e2e": "playwright install chromium",
         "test:e2e": "playwright test",
         "test:e2e:ui": "playwright test --ui",
         "test:all": "pnpm test:unit && pnpm test:e2e"
@@ -34,20 +35,20 @@
     },
     "devDependencies": {
         "@playwright/test": "^1.59.1",
-        "@repo/jest": "workspace:*",
         "@repo/playwright": "workspace:*",
         "@repo/typescript": "workspace:*",
+        "@repo/vitest": "workspace:*",
         "@tailwindcss/postcss": "^4.2.4",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.2",
-        "@types/jest": "^30.0.0",
         "@types/node": "^25.6.0",
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
-        "jest": "^30.3.0",
-        "jest-environment-jsdom": "^30.3.0",
+        "@vitest/coverage-v8": "^3.2.4",
+        "jsdom": "^26.1.0",
         "tailwindcss": "^4.2.4",
         "tw-animate-css": "^1.4.0",
-        "typescript": "6.0.3"
+        "typescript": "6.0.3",
+        "vitest": "^3.2.4"
     }
 }

@@ -14,7 +14,7 @@ const getEnvFilePath = (): string => {
         type: "file",
     });
 
-    const rootDir = workspaceRoot ? path.dirname(workspaceRoot) : path.resolve(__dirname, "../..");
+    const rootDir = workspaceRoot ? path.dirname(workspaceRoot) : path.resolve(import.meta.dirname, "../..");
 
     return path.join(rootDir, `.env.${environment}`);
 };

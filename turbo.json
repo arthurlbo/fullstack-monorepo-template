@@ -3,15 +3,7 @@
     "ui": "tui",
     "globalEnv": [
         "NODE_ENV",
-        "WEB_PORT",
-        "NEXT_PUBLIC_API_URL",
-        "API_PORT",
-        "ALLOWED_ORIGINS",
-        "DB_HOST",
-        "DB_PORT",
-        "DB_USERNAME",
-        "DB_PASSWORD",
-        "DB_DATABASE"
+        "NEXT_PUBLIC_API_URL"
     ],
     "tasks": {
         "build": {
@@ -21,38 +13,38 @@
         },
         "dev": {
             "cache": false,
-            "persistent": true
+            "persistent": true,
+            "dependsOn": ["^build"]
         },
         "start": {
             "cache": false,
-            "persistent": true
+            "persistent": true,
+            "dependsOn": ["build"]
         },
-        "migrate:up": {
-            "cache": false
+        "lint": {},
+        "lint:fix": {},
+        "lint:fix:unsafe": {},
+        "typecheck": {
+            "dependsOn": ["^build"]
         },
-        "migrate:down": {
-            "cache": false
-        },
-        "clear:db": {
-            "cache": false
-        },
-        "lint": { "dependsOn": ["^build"] },
-        "lint:fix": { "dependsOn": ["^build"] },
-        "lint:fix:unsafe": { "dependsOn": ["^build"] },
-        "typecheck": { "dependsOn": ["^build"] },
         "test:unit": {
-            "cache": true,
-            "outputs": ["coverage/**"]
+            "dependsOn": ["^build"],
+            "inputs": ["$TURBO_DEFAULT$"],
+            "outputs": ["coverage/**"],
+            "cache": true
         },
         "test:unit:coverage": {
-            "outputs": ["coverage/**"]
+            "dependsOn": ["^build"],
+            "inputs": ["$TURBO_DEFAULT$"],
+            "outputs": ["coverage/**"],
+            "cache": true
         },
         "test:e2e": {
             "dependsOn": ["^build"],
             "cache": false
         },
         "test:all": {
-            "dependsOn": ["test:unit", "test:e2e"],
+            "dependsOn": ["^build"],
             "cache": false
         }
     }

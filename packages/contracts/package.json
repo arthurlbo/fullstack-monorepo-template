@@ -1,0 +1,35 @@
+{
+    "name": "@repo/contracts",
+    "version": "1.0.0",
+    "type": "module",
+    "private": true,
+    "files": ["dist"],
+    "scripts": {
+        "build": "tsup",
+        "lint": "biome check .",
+        "lint:fix": "biome check --write .",
+        "lint:fix:unsafe": "biome check --write --unsafe ."
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.cjs"
+        },
+        "./users": {
+            "types": "./dist/users.d.ts",
+            "import": "./dist/users.mjs",
+            "require": "./dist/users.cjs"
+        }
+    },
+    "peerDependencies": {
+        "zod": "^4.0.0"
+    },
+    "devDependencies": {
+        "@repo/tsup": "workspace:*",
+        "@repo/typescript": "workspace:*",
+        "tsup": "^8.5.1",
+        "typescript": "^6.0.3",
+        "zod": "^4.3.6"
+    }
+}

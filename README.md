@@ -4,21 +4,21 @@
 
 ## Overview
 
-This is a comprehensive monorepo template built with **pnpm workspaces** and **Turbo** for efficient builds and task orchestration. It provides a solid foundation for building scalable Full-stack applications with shared configuration, design systems, and utilities.
+This is a comprehensive monorepo template built with **pnpm workspaces** and **Turbo** for efficient builds and task orchestration. It provides a solid foundation for building scalable Full-stack applications with shared configuration, design systems, validation schemas, and utilities.
 
 ## What's inside?
 
 ### Apps
 
-- **`web`**: Next.js 16 + React 19 app with TypeScript, Tailwind CSS v4, Jest, and Playwright
-- **`api`**: NestJS 11 API with TypeScript, TypeORM, Helmet, Compression, Jest, and Supertest
+- **`web`**: Next.js 16 + React 19 app with TypeScript, Tailwind CSS v4, Vitest, and Playwright
+- **`api`**: NestJS 11 API with TypeScript, TypeORM, Zod, Helmet, Compression, Vitest, and Supertest
 
 ### Packages
 
-- **`@repo/design-system`**: Shared UI components and utilities (Tailwind CSS + shadcn/ui)
+- **`@repo/design-system`**: Shared UI primitives (Tailwind CSS + shadcn/ui)
 - **`@repo/env`**: Centralized environment variable validation with Zod
-- **`@repo/database-typeorm`**: TypeORM DataSource configuration and migrations
-- **`@repo/jest`**: Shared Jest configurations for testing
+- **`@repo/contracts`**: Shared Zod schemas and inferred TypeScript types (validation contracts between web and API)
+- **`@repo/vitest`**: Shared Vitest configurations for testing
 - **`@repo/playwright`**: Shared Playwright configuration for E2E tests
 - **`@repo/typescript`**: Shared TypeScript configurations
 - **`@repo/tsup`**: Shared tsup configuration for bundling packages
@@ -27,10 +27,11 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 
 - **Monorepo**: pnpm workspaces + Turbo
 - **Frontend**: Next.js 16, React 19, TypeScript
-- **Backend**: NestJS, TypeScript
 - **Styling**: Tailwind CSS v4
+- **Backend**: NestJS 11, TypeScript
 - **Database**: TypeORM + PostgreSQL
-- **Testing**: Jest, Playwright, Supertest
+- **Validation**: Zod (shared schemas via `@repo/contracts`)
+- **Testing**: Vitest, Playwright, Supertest
 - **Linting/Formatting**: Biome
 - **Git hooks**: Husky + Commitlint
 - **Containerization**: Docker + Docker Compose
@@ -45,36 +46,16 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 
 ### Installation
 
-Install dependencies:
-
 ```bash
 pnpm install
 ```
 
-### Build
-
-Build all apps and packages:
-
-```bash
-pnpm build
-```
-
 ### Development
 
-Run all apps in development mode:
-
 ```bash
-pnpm dev
-```
-
-Or run individual apps:
-
-```bash
-# Web app (Next.js)
-pnpm --filter web dev
-
-# API (NestJS)
-pnpm --filter api dev
+pnpm dev                    # All apps
+pnpm --filter web dev       # Web only
+pnpm --filter api dev       # API only
 ```
 
 Open <http://localhost:3000> for the web app and <http://localhost:3001> for the API.
@@ -83,22 +64,22 @@ Open <http://localhost:3000> for the web app and <http://localhost:3001> for the
 
 ```text
 fullstack-monorepo-template/
-├─ apps/
-│  ├─ web/              # Next.js 16 + React 19 app
-│  └─ api/              # NestJS 11 API
-├─ packages/
-│  ├─ design-system/    # UI components and utilities
-│  ├─ env/              # Environment validation
-│  ├─ database-typeorm/ # TypeORM configuration
-│  └─ config/           # Shared configurations
-│     ├─ jest/
-│     ├─ playwright/
-│     ├─ typescript/
-│     └─ tsup/
-├─ docker-compose.*.yaml
-├─ package.json
-├─ pnpm-workspace.yaml
-└─ turbo.json
+├── apps/
+│   ├── web/                # Next.js 16 + React 19
+│   └── api/                # NestJS 11
+├── packages/
+│   ├── contracts/          # Shared Zod schemas and TypeScript types
+│   ├── design-system/      # UI primitives
+│   ├── env/                # Environment validation
+│   └── config/             # Shared configurations
+│       ├── vitest/
+│       ├── playwright/
+│       ├── typescript/
+│       └── tsup/
+├── docker-compose.*.yaml
+├── package.json
+├── pnpm-workspace.yaml
+└── turbo.json
 ```
 
 ## Available Commands
@@ -108,8 +89,8 @@ fullstack-monorepo-template/
 ```bash
 pnpm dev                # Run all apps in dev mode
 pnpm build              # Build all apps and packages
-pnpm lint               # Check lint and formatting across all apps and packages
-pnpm lint:fix           # Fix lint and formatting across all apps and packages
+pnpm lint               # Check lint and formatting
+pnpm lint:fix           # Fix lint and formatting
 pnpm lint:fix:unsafe    # Fix lint and formatting (including unsafe fixes)
 pnpm typecheck          # Type-check all TypeScript files
 ```
@@ -125,28 +106,33 @@ pnpm start:production   # Start all built apps (production env)
 ### Testing
 
 ```bash
-pnpm test:unit          # Run unit tests across all apps
-pnpm test:e2e           # Run end-to-end tests across all apps
-pnpm test:all           # Run all tests across all apps
+pnpm test:unit          # Unit tests across all apps
+pnpm test:e2e           # End-to-end tests across all apps
+pnpm test:all           # All tests across all apps
+```
+
+### Database
+
+```bash
+pnpm migrate:generate:dev       # Generate a new migration file (development)
+pnpm migrate:up:dev             # Run pending migrations (development)
+pnpm migrate:up:staging         # Run pending migrations (staging)
+pnpm migrate:up:production      # Run pending migrations (production)
+pnpm migrate:down:dev           # Revert last migration (development)
+pnpm migrate:down:staging       # Revert last migration (staging)
+pnpm clear:db:dev               # Drop all tables (development)
 ```
 
 ### Docker
 
 ```bash
 pnpm docker:dev         # Start development environment
+pnpm docker:test        # Start test environment
 pnpm docker:staging     # Start staging environment
 pnpm docker:production  # Start production environment
 ```
 
-### Database Migrations
-
-```bash
-pnpm migrate:up:dev     # Run migrations (development)
-pnpm migrate:down:dev   # Revert migrations (development)
-pnpm clear:db:dev       # Clear database (development)
-```
-
-### Git Commits
+### Git
 
 ```bash
 pnpm commit             # Interactive commit with Commitizen
@@ -156,14 +142,10 @@ pnpm commit             # Interactive commit with Commitizen
 
 Environment files are managed at the monorepo root and validated via `@repo/env`:
 
-- `.env.development` - Development environment
-- `.env.staging` - Staging environment
-- `.env.production` - Production environment
-- `.env.test` - Test environment
-
-## Package Management
-
-This monorepo uses **pnpm workspaces** with the `workspace:*` protocol for internal dependencies. All shared packages are automatically linked and hot-reloaded during development.
+- `.env.development` — Development environment
+- `.env.staging` — Staging environment
+- `.env.production` — Production environment
+- `.env.test` — Test environment
 
 ## Contributing
 
