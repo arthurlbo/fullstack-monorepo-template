@@ -27,11 +27,11 @@ The server runs by default on the port defined by `API_PORT` in your `.env.*` fi
 
 ## Endpoints
 
-| Path | Description |
-|---|---|
-| `GET /health` | Health check (excluded from global prefix) |
-| `GET /api/docs` | Swagger documentation UI |
-| `* /api/v1/*` | All API routes (global prefix + URI versioning) |
+| Path            | Description                                     |
+| --------------- | ----------------------------------------------- |
+| `GET /health`   | Health check (excluded from global prefix)      |
+| `GET /api/docs` | Swagger documentation UI                        |
+| `* /api/v1/*`   | All API routes (global prefix + URI versioning) |
 
 ## Available Commands
 
@@ -125,12 +125,12 @@ Each module follows a strict layered structure with a one-way dependency rule:
 presentation → application → domain ← infrastructure
 ```
 
-| Layer | Responsibility |
-|---|---|
-| **domain** | Entities, repository interfaces, DTOs — pure TypeScript, no framework |
-| **application** | Use cases — orchestrate domain logic, depend only on domain |
-| **infrastructure** | TypeORM entities, mappers, repository implementations |
-| **presentation** | HTTP controllers, response DTOs, Swagger decorators |
+| Layer              | Responsibility                                                        |
+| ------------------ | --------------------------------------------------------------------- |
+| **domain**         | Entities, repository interfaces, DTOs — pure TypeScript, no framework |
+| **application**    | Use cases — orchestrate domain logic, depend only on domain           |
+| **infrastructure** | TypeORM entities, mappers, repository implementations                 |
+| **presentation**   | HTTP controllers, response DTOs, Swagger decorators                   |
 
 ## Validation with Zod
 
@@ -149,5 +149,6 @@ Domain DTOs are derived from the contract schemas — no duplication:
 ```ts
 // domain/dtos/create-user.dto.ts
 import type { TCreateUserInput } from "@repo/contracts/users";
+
 export interface ICreateUserDTO extends TCreateUserInput {}
 ```

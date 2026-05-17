@@ -22,7 +22,7 @@ const getEnvFilePath = (): string => {
 const envPath = getEnvFilePath();
 dotenv.config({ path: envPath });
 
-// biome-ignore lint/suspicious/noExplicitAny: zod generic requires any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const validateEnv = <T extends z.ZodType<any>>(schema: T, schemaName: string): z.infer<T> => {
     const validationResult = schema.safeParse(process.env);
 

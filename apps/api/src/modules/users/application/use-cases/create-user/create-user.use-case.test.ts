@@ -1,4 +1,5 @@
 import { ConflictException } from "@nestjs/common";
+
 import type { Mocked } from "vitest";
 
 import type { User } from "../../../domain/entities/user.entity";

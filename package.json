@@ -19,7 +19,8 @@
         "start:production": "pnpm env::production turbo run start",
         "lint": "turbo run lint",
         "lint:fix": "turbo run lint:fix",
-        "lint:fix:unsafe": "turbo run lint:fix:unsafe",
+        "prettier:fix": "turbo run prettier:fix",
+        "format": "turbo run format",
         "typecheck": "turbo run typecheck",
         "test:unit": "turbo run test:unit",
         "test:e2e": "turbo run test:e2e",
@@ -40,20 +41,23 @@
         "env::production": "cross-env NODE_ENV=production"
     },
     "devDependencies": {
-        "@biomejs/biome": "^1.9.4",
         "@commitlint/cli": "^20.5.0",
         "@commitlint/config-conventional": "^20.5.0",
         "@repo/typescript": "workspace:*",
+        "@trivago/prettier-plugin-sort-imports": "^6.0.2",
         "commitizen": "^4.3.1",
         "cross-env": "^10.1.0",
         "cz-conventional-changelog": "^3.3.0",
         "husky": "^9.1.7",
         "lint-staged": "^16.1.0",
+        "prettier": "^3.8.3",
+        "prettier-plugin-tailwindcss": "^0.7.2",
         "turbo": "^2.9.6",
         "typescript": "6.0.3"
     },
     "lint-staged": {
-        "**/*.{ts,tsx,js,jsx,json}": "biome check --write"
+        "**/*.{ts,tsx,js,jsx}": ["eslint --fix", "prettier --write"],
+        "**/*.{json,md,css,yaml}": "prettier --write"
     },
     "packageManager": "pnpm@10.26.2",
     "engines": {

@@ -18,6 +18,7 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 - **`@repo/design-system`**: Shared UI primitives (Tailwind CSS + shadcn/ui)
 - **`@repo/env`**: Centralized environment variable validation with Zod
 - **`@repo/contracts`**: Shared Zod schemas and inferred TypeScript types (validation contracts between web and API)
+- **`@repo/eslint`**: Shared ESLint configurations (base, Next.js, NestJS, React)
 - **`@repo/vitest`**: Shared Vitest configurations for testing
 - **`@repo/playwright`**: Shared Playwright configuration for E2E tests
 - **`@repo/typescript`**: Shared TypeScript configurations
@@ -32,7 +33,7 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 - **Database**: TypeORM + PostgreSQL
 - **Validation**: Zod (shared schemas via `@repo/contracts`)
 - **Testing**: Vitest, Playwright, Supertest
-- **Linting/Formatting**: Biome
+- **Linting/Formatting**: ESLint 9, Prettier
 - **Git hooks**: Husky + Commitlint
 - **Containerization**: Docker + Docker Compose
 
@@ -72,6 +73,7 @@ fullstack-monorepo-template/
 │   ├── design-system/      # UI primitives
 │   ├── env/                # Environment validation
 │   └── config/             # Shared configurations
+│       ├── eslint/
 │       ├── vitest/
 │       ├── playwright/
 │       ├── typescript/
@@ -89,9 +91,9 @@ fullstack-monorepo-template/
 ```bash
 pnpm dev                # Run all apps in dev mode
 pnpm build              # Build all apps and packages
-pnpm lint               # Check lint and formatting
-pnpm lint:fix           # Fix lint and formatting
-pnpm lint:fix:unsafe    # Fix lint and formatting (including unsafe fixes)
+pnpm lint               # Lint all apps and packages
+pnpm lint:fix           # Fix lint across all apps and packages
+pnpm format             # Fix lint and formatting across all apps and packages
 pnpm typecheck          # Type-check all TypeScript files
 ```
 

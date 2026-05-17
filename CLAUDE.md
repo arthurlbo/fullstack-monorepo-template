@@ -49,7 +49,8 @@ fullstack-monorepo-template/
 pnpm dev                        # Start all apps in development
 pnpm build                      # Build all apps and packages
 pnpm lint                       # Lint all workspaces
-pnpm lint:fix                   # Fix lint and formatting across all workspaces
+pnpm lint:fix                   # Fix lint across all workspaces
+pnpm format                     # Fix lint and formatting (ESLint + Prettier) across all workspaces
 pnpm typecheck                  # Type-check all workspaces
 pnpm test:unit                  # Run unit tests across all workspaces
 pnpm test:e2e                   # Run e2e tests across all workspaces
@@ -283,14 +284,15 @@ Use **Conventional Commits** (`feat`, `fix`, `chore`, `docs`, `refactor`, `test`
 ## 6. Tooling
 
 ### Linting & Formatting
-**BiomeJS** — handles both linting and formatting. ESLint and Prettier are not used.
+**ESLint 9 + Prettier** — ESLint handles linting, Prettier handles formatting.
 
 ```bash
-pnpm lint:fix         # Fix across all workspaces (via Turborepo)
-pnpm --filter web lint:fix  # Fix a single app
+pnpm lint:fix         # Fix ESLint issues across all workspaces (via Turborepo)
+pnpm format           # Fix ESLint + Prettier across all workspaces
+pnpm --filter web format  # Fix a single app
 ```
 
-BiomeJS runs automatically on staged files via lint-staged + Husky on every commit.
+Prettier and ESLint run automatically on staged files via lint-staged + Husky on every commit.
 
 ### Testing
 | Tool | Purpose |
@@ -317,7 +319,7 @@ BiomeJS runs automatically on staged files via lint-staged + Husky on every comm
 4. **Check `@repo/env`**: Verify whether the environment variable is already validated before adding it.
 
 ### After Every Change
-1. `pnpm --filter <app> lint:fix` — Apply BiomeJS fixes.
+1. `pnpm --filter <app> format` — Apply ESLint + Prettier fixes.
 2. `pnpm --filter <app> typecheck` — Verify no type errors.
 3. `pnpm --filter <app> test:unit` — Ensure no regressions.
 4. For UI changes: verify in the browser (dev server must be running).
@@ -325,6 +327,6 @@ BiomeJS runs automatically on staged files via lint-staged + Husky on every comm
 ### Non-Negotiable Rules
 - If you find code that has comments, uses `any`, or violates these conventions, your first priority is to refactor it.
 - Never duplicate data shapes — derive API DTOs from `@repo/contracts`, never redefine them.
-- Never bypass BiomeJS or TypeScript errors with escape hatches (`// @ts-ignore`, `// biome-ignore` without strong justification).
+- Never bypass ESLint or TypeScript errors with escape hatches (`// @ts-ignore`, `// eslint-disable` without strong justification).
 - Never write raw hex colors or hardcoded spacing — use design tokens from `@repo/design-system/globals.css`.
 - Always check for broken imports and type errors before declaring a task finished.

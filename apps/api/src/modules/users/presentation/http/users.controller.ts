@@ -1,9 +1,10 @@
 import { Body, Controller, Post } from "@nestjs/common";
 import { ApiBody, ApiCreatedResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
-import { CreateUserSchema, type TUserOutput, UserSchema } from "@repo/contracts/users";
 
 import { ZodValidationPipe } from "@/shared/pipes/zod-validation.pipe";
 import { zodToSwagger } from "@/shared/utils/zod-swagger";
+import { CreateUserSchema, type TUserOutput, UserSchema } from "@repo/contracts/users";
+
 import { CreateUserUseCase } from "../../application/use-cases/create-user/create-user.use-case";
 import type { ICreateUserDTO } from "../../domain/dtos/create-user.dto";
 import { UserPresenter } from "./user.presenter";

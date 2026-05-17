@@ -8,12 +8,12 @@ Built with Tailwind CSS v4 and based on shadcn/ui, this package provides reusabl
 
 ## Available Exports
 
-| Export path | Contents |
-|---|---|
-| `@repo/design-system/components` | Shared React components (Button, etc.) |
-| `@repo/design-system/utils` | Utility functions (`cn`, etc.) |
-| `@repo/design-system/globals.css` | Global CSS with Tailwind base + design tokens |
-| `@repo/design-system/postcss.config` | PostCSS configuration for Tailwind CSS v4 |
+| Export path                          | Contents                                      |
+| ------------------------------------ | --------------------------------------------- |
+| `@repo/design-system/components`     | Shared React components (Button, etc.)        |
+| `@repo/design-system/utils`          | Utility functions (`cn`, etc.)                |
+| `@repo/design-system/globals.css`    | Global CSS with Tailwind base + design tokens |
+| `@repo/design-system/postcss.config` | PostCSS configuration for Tailwind CSS v4     |
 
 ## Usage
 

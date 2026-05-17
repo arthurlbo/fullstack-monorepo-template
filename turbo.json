@@ -21,9 +21,14 @@
             "persistent": true,
             "dependsOn": ["build"]
         },
-        "lint": {},
-        "lint:fix": {},
-        "lint:fix:unsafe": {},
+        "lint": {
+            "dependsOn": ["^build"]
+        },
+        "lint:fix": {
+            "dependsOn": ["^build"]
+        },
+        "prettier:fix": {},
+        "format": {},
         "typecheck": {
             "dependsOn": ["^build"]
         },

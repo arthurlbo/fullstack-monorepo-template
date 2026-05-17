@@ -92,11 +92,10 @@ The design system is the single source of truth for base components (Button, Inp
 
 ```ts
 // Correct — primitives from the package
-import { Button, Input } from "@repo/design-system/components"
-
 // Correct — compositions specific to the app live in shared/components/
-import { LinkButton } from "@/shared/components/navigation"
-import { EquipmentCard } from "@/shared/components/operation"
+import { LinkButton } from "@/shared/components/navigation";
+import { EquipmentCard } from "@/shared/components/operation";
+import { Button, Input } from "@repo/design-system/components";
 ```
 
 **When to add to `@repo/design-system`:** The component is a primitive with no business logic, is used in more than one app.
@@ -110,7 +109,7 @@ import { EquipmentCard } from "@/shared/components/operation"
 Barrel files (`index.ts`) exist to define a **public API** — what a module exposes to the outside.
 
 | Location                                                                                                 | Use barrel? | Reason                                                     |
-|----------------------------------------------------------------------------------------------------------|-------------|------------------------------------------------------------|
+| -------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------- |
 | `features/[feature]/index.ts`                                                                            | **Yes**     | Defines the public API of the feature                      |
 | `shared/components/ui/index.ts`                                                                          | **Yes**     | Aggregates all UI primitives                               |
 | `lib/index.ts`                                                                                           | **Yes**     | Aggregates infrastructure config                           |
@@ -123,7 +122,7 @@ Barrel files (`index.ts`) exist to define a **public API** — what a module exp
 
 ## File naming
 
-| File | Type | Tool |
-|---|---|---|
+| File                | Type             | Tool                     |
+| ------------------- | ---------------- | ------------------------ |
 | `[file].test.ts(x)` | Unit / Component | Vitest + Testing Library |
-| `[file].spec.ts(x)` | End-to-end | Playwright |
+| `[file].spec.ts(x)` | End-to-end       | Playwright               |
