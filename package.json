@@ -41,18 +41,18 @@
         "env::production": "cross-env NODE_ENV=production"
     },
     "devDependencies": {
-        "@commitlint/cli": "^20.5.0",
-        "@commitlint/config-conventional": "^20.5.0",
+        "@commitlint/cli": "^21.0.1",
+        "@commitlint/config-conventional": "^21.0.1",
         "@repo/typescript": "workspace:*",
         "@trivago/prettier-plugin-sort-imports": "^6.0.2",
         "commitizen": "^4.3.1",
         "cross-env": "^10.1.0",
         "cz-conventional-changelog": "^3.3.0",
         "husky": "^9.1.7",
-        "lint-staged": "^16.1.0",
+        "lint-staged": "^17.0.5",
         "prettier": "^3.8.3",
-        "prettier-plugin-tailwindcss": "^0.7.2",
-        "turbo": "^2.9.6",
+        "prettier-plugin-tailwindcss": "^0.8.0",
+        "turbo": "^2.9.14",
         "typescript": "6.0.3"
     },
     "lint-staged": {

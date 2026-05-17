@@ -27,6 +27,6 @@
         "@repo/typescript": "workspace:*",
         "tsup": "^8.5.1",
         "typescript": "^6.0.3",
-        "zod": "^4.3.6"
+        "zod": "^4.4.3"
     }
 }

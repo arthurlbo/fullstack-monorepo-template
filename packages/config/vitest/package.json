@@ -30,19 +30,19 @@
         }
     },
     "dependencies": {
-        "@vitejs/plugin-react": "^4.5.2",
+        "@vitejs/plugin-react": "^5.2.0",
         "unplugin-swc": "^1.4.0",
-        "vite-tsconfig-paths": "^5.1.4"
+        "vite-tsconfig-paths": "^6.1.1"
     },
     "peerDependencies": {
         "@swc/core": "^1.0.0",
-        "vitest": "^3.0.0"
+        "vitest": "^4.0.0"
     },
     "devDependencies": {
         "@repo/tsup": "workspace:*",
         "@repo/typescript": "workspace:*",
         "tsup": "^8.5.1",
         "typescript": "^6.0.3",
-        "vitest": "^3.2.4"
+        "vitest": "^4.1.6"
     }
 }

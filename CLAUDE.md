@@ -284,7 +284,7 @@ Use **Conventional Commits** (`feat`, `fix`, `chore`, `docs`, `refactor`, `test`
 ## 6. Tooling
 
 ### Linting & Formatting
-**ESLint 9 + Prettier** — ESLint handles linting, Prettier handles formatting.
+**ESLint 10 + Prettier** — ESLint handles linting, Prettier handles formatting.
 
 ```bash
 pnpm lint:fix         # Fix ESLint issues across all workspaces (via Turborepo)

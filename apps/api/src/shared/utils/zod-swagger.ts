@@ -1,8 +1,10 @@
-import type { SchemaObject } from "@nestjs/swagger/dist/interfaces/open-api-spec.interface";
+import type { ApiResponseSchemaHost } from "@nestjs/swagger";
 
 import { z } from "zod";
 
-export function zodToSwagger(schema: z.ZodType): SchemaObject {
+type TSwaggerSchemaObject = ApiResponseSchemaHost["schema"];
+
+export function zodToSwagger(schema: z.ZodType): TSwaggerSchemaObject {
     return z.toJSONSchema(schema, {
         unrepresentable: "any",
         override: ({ zodSchema, jsonSchema }) => {
@@ -11,5 +13,5 @@ export function zodToSwagger(schema: z.ZodType): SchemaObject {
                 jsonSchema.format = "date-time";
             }
         },
-    }) as SchemaObject;
+    }) as TSwaggerSchemaObject;
 }

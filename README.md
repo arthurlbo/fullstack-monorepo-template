@@ -33,7 +33,7 @@ This is a comprehensive monorepo template built with **pnpm workspaces** and **T
 - **Database**: TypeORM + PostgreSQL
 - **Validation**: Zod (shared schemas via `@repo/contracts`)
 - **Testing**: Vitest, Playwright, Supertest
-- **Linting/Formatting**: ESLint 9, Prettier
+- **Linting/Formatting**: ESLint 10, Prettier
 - **Git hooks**: Husky + Commitlint
 - **Containerization**: Docker + Docker Compose
 
