@@ -13,6 +13,7 @@
         "commit": "cz",
         "prepare": "husky",
         "build": "turbo run build",
+        "build:packages": "pnpm --filter \"./packages/**\" build",
         "dev": "pnpm env::dev turbo run dev",
         "start:dev": "pnpm env::dev turbo run start",
         "start:staging": "pnpm env::staging turbo run start",
