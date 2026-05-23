@@ -56,3 +56,11 @@ export const webSchema = z.object({
         })
         .describe("URL for the API application"),
 });
+
+export const mobileSchema = z.object({
+    EXPO_PUBLIC_API_URL: z
+        .string({
+            error: "You forgot to set the EXPO_PUBLIC_API_URL variable",
+        })
+        .describe("URL for the API application"),
+});
