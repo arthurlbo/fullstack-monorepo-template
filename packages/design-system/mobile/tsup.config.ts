@@ -1,5 +1,6 @@
-import { baseConfig } from "@repo/tsup";
 import { defineConfig } from "tsup";
+
+import { baseConfig } from "@repo/tsup";
 
 export default defineConfig({
     ...baseConfig,

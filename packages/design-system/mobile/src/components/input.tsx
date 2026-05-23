@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { type JSX, useState } from "react";
 import type { ComponentType } from "react";
+
 import { Text, TextInput, type TextInputProps, TouchableOpacity, View } from "react-native";
 
+import { theme } from "../theme";
 import { cn } from "../utils";
 
 type TIconComponent = ComponentType<{ size?: number; color?: string }>;
@@ -29,21 +31,21 @@ export const Input = ({
     secureTextEntry,
     editable = true,
     ...props
-}: IInputProps) => {
+}: IInputProps): JSX.Element => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const isPasswordField = secureTextEntry !== undefined && secureTextEntry;
 
     const handleTogglePassword = () => setIsPasswordVisible((previous) => !previous);
 
-    const iconColor = error ? "#F87171" : "#7C84A1";
+    const iconColor = error ? theme.colors.error[400] : theme.colors.surface[100];
 
     return (
         <View className={cn("gap-1", containerClassName)}>
-            {label ? <Text className="font-semibold text-sm text-primary-200">{label}</Text> : null}
+            {label ? <Text className="text-primary-200 text-sm font-semibold">{label}</Text> : null}
 
             <View
                 className={cn(
-                    "flex-row items-center gap-2 rounded-xl border border-surface-500 bg-surface-700 px-4 py-3",
+                    "border-surface-500 bg-surface-700 flex-row items-center gap-2 rounded-xl border px-4 py-3",
                     error && "border-error-400",
                     !editable && "opacity-50",
                 )}
@@ -54,16 +56,16 @@ export const Input = ({
                     {...props}
                     editable={editable}
                     secureTextEntry={isPasswordField && !isPasswordVisible}
-                    placeholderTextColor="#5C637D"
-                    className={cn("flex-1 font-body text-base text-primary-100", className)}
+                    placeholderTextColor={theme.colors.surface[300]}
+                    className={cn("font-body text-primary-100 flex-1 text-base", className)}
                 />
 
                 {isPasswordField ? (
                     <TouchableOpacity onPress={handleTogglePassword} hitSlop={8}>
                         {isPasswordVisible ? (
-                            <Text className="text-xs text-surface-100">hide</Text>
+                            <Text className="text-surface-100 text-xs">hide</Text>
                         ) : (
-                            <Text className="text-xs text-surface-100">show</Text>
+                            <Text className="text-surface-100 text-xs">show</Text>
                         )}
                     </TouchableOpacity>
                 ) : IconRight ? (
@@ -73,8 +75,8 @@ export const Input = ({
                 ) : null}
             </View>
 
-            {description && !error ? <Text className="text-xs text-surface-100">{description}</Text> : null}
-            {error ? <Text className="text-xs text-error-400">{error}</Text> : null}
+            {description && !error ? <Text className="text-surface-100 text-xs">{description}</Text> : null}
+            {error ? <Text className="text-error-400 text-xs">{error}</Text> : null}
         </View>
     );
 };

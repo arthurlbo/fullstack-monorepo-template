@@ -1,7 +1,9 @@
+import type { JSX } from "react";
+
 import { LinkButton } from "@/shared/components/navigation";
 import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
 
-export const Home = () => {
+export const Home = (): JSX.Element => {
     return (
         <main className="text-primary-100 flex flex-col items-center gap-6 text-center">
             <h1 className="text-2xl font-bold">Hello Dev</h1>

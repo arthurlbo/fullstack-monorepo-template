@@ -4,6 +4,6 @@ import { expoConfig } from "@repo/eslint/expo";
 export default [
     ...expoConfig,
     {
-        ignores: ["babel.config.js", "metro.config.js", "tailwind.config.js"],
+        ignores: ["babel.config.js", "metro.config.js", "tailwind.config.js", "expo-env.d.ts", "nativewind-env.d.ts"],
     },
 ];

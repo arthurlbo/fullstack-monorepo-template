@@ -2,10 +2,7 @@
 const { theme } = require("@repo/design-system-mobile/theme");
 
 module.exports = {
-    content: [
-        "./src/**/*.{js,jsx,ts,tsx}",
-        "../../packages/design-system/mobile/src/**/*.{js,jsx,ts,tsx}",
-    ],
+    content: ["./src/**/*.{js,jsx,ts,tsx}", "../../packages/design-system/mobile/src/**/*.{js,jsx,ts,tsx}"],
     theme: {
         extend: {
             ...theme,

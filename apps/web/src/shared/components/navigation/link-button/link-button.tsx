@@ -1,3 +1,5 @@
+import type { JSX } from "react";
+
 import Link from "next/link";
 
 import { cn } from "@/shared/utils";
@@ -10,7 +12,7 @@ interface IProps {
     className?: string;
 }
 
-export const LinkButton = ({ className, href, label, icon: Icon }: IProps) => {
+export const LinkButton = ({ className, href, label, icon: Icon }: IProps): JSX.Element => {
     return (
         <Link
             href={href}

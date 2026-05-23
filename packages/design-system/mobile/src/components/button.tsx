@@ -1,7 +1,8 @@
 import type { ComponentType, ReactNode } from "react";
 
-import { type VariantProps, cva } from "class-variance-authority";
 import { ActivityIndicator, Pressable, Text } from "react-native";
+
+import { type VariantProps, cva } from "class-variance-authority";
 
 import { theme } from "../theme";
 import { cn } from "../utils";
@@ -110,10 +111,14 @@ export const Button = ({
                 <ActivityIndicator size="small" color={iconColor} />
             ) : (
                 <>
-                    {IconLeft ? <IconLeft size={iconLeft.size ?? iconSize} color={iconLeft.color ?? iconColor} /> : null}
+                    {IconLeft ? (
+                        <IconLeft size={iconLeft.size ?? iconSize} color={iconLeft.color ?? iconColor} />
+                    ) : null}
+
                     {children ? (
                         <Text className={cn(buttonTextVariants({ variant, size }), textClassName)}>{children}</Text>
                     ) : null}
+
                     {IconRight ? (
                         <IconRight size={iconRight.size ?? iconSize} color={iconRight.color ?? iconColor} />
                     ) : null}

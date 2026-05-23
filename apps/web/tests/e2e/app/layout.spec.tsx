@@ -31,7 +31,6 @@ test.describe("RootLayout E2E", () => {
     test("should support theme switching (class attribute)", async ({ page }) => {
         const html = page.locator("html");
 
-        // Check if theme class can be applied
         const hasThemeSupport = await html.evaluate((el) => {
             return el.classList.length >= 0;
         });

@@ -1,9 +1,13 @@
+import type { JSX } from "react";
+
 import { Text, View } from "react-native";
+
 import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 import { LinkButton } from "@/shared/components/navigation";
 
-export const Home = () => {
+export const Home = (): JSX.Element => {
     return (
         <SafeAreaView className="flex-1 bg-background">
             <View className="flex-1 items-center justify-center gap-8 px-6">

@@ -29,6 +29,12 @@ export const theme = {
             600: "#31374C",
             700: "#24293B",
         },
+        success: {
+            500: "#22C55E",
+        },
+        error: {
+            400: "#F87171",
+        },
     },
     fontFamily: {
         body: ["PlusJakartaSans_400Regular"],

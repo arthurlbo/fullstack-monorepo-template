@@ -40,7 +40,12 @@ fullstack-monorepo-template/
     │   ├── mobile/   # @repo/design-system-mobile — mobile UI (NativeWind)
     │   └── shared/   # shared color palette — not a package, just theme.ts
     ├── env/          # @repo/env — centralized env var validation
-    └── typescript/   # @repo/typescript — shared tsconfig base
+    └── config/       # shared tool configurations
+        ├── typescript/   # @repo/typescript — shared tsconfig base
+        ├── eslint/       # @repo/eslint — shared ESLint configs
+        ├── vitest/       # @repo/vitest — shared Vitest configs
+        ├── playwright/   # @repo/playwright — shared Playwright config
+        └── tsup/         # @repo/tsup — shared tsup base config
 ```
 
 ### Package Manager & Task Runner
@@ -51,6 +56,7 @@ fullstack-monorepo-template/
 ### Root Scripts
 ```bash
 pnpm dev                        # Start all apps in development
+pnpm build:packages             # Build only packages (config, design-system, contracts, env)
 pnpm build                      # Build all apps and packages
 pnpm lint                       # Lint all workspaces
 pnpm lint:fix                   # Fix lint across all workspaces
@@ -114,7 +120,7 @@ import { cn } from "@repo/design-system-web/utils";
 Built with NativeWind + React Native. **Mobile UI primitives always come from `@repo/design-system-mobile`.**
 
 ```ts
-import { Button, Input } from "@repo/design-system-mobile/components";
+import { Button, Input, type TIcon } from "@repo/design-system-mobile/components";
 import { cn } from "@repo/design-system-mobile/utils";
 import { theme } from "@repo/design-system-mobile/theme";
 ```
@@ -233,6 +239,8 @@ import { LinkButton } from "@/shared/components/navigation";
 ```
 
 **Styling:** All styling via NativeWind class names — never raw StyleSheet objects for colors or spacing. Use theme tokens as class names: `bg-accent-500`, `text-primary-100`, `border-surface-400`, etc.
+
+**Icons:** Use `@tabler/icons-react-native`. Pass `size` and `color` as props (SVG-based — NativeWind classes do not apply to icons). Default values come from `theme` tokens in `@repo/design-system-mobile`. `metro.config.js` has `unstable_enablePackageExports: true` to avoid Metro hanging on the full icon barrel.
 
 ### `apps/api` — NestJS (DDD)
 

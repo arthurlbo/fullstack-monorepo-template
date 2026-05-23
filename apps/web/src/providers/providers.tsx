@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, ReactNode } from "react";
+import type { ComponentProps, JSX, ReactNode } from "react";
 
 import { AppProgressProvider } from "@bprogress/next";
 import { ThemeProvider } from "next-themes";
@@ -10,12 +10,7 @@ interface IProps {
     themeConfig: ComponentProps<typeof ThemeProvider>;
 }
 
-/**
- * Providers component to wrap the application with necessary providers.
- * @param children - Wrapped application.
- * @param themeConfig - Theme configuration for NextThemesProvider.
- */
-export function Providers({ children, themeConfig }: IProps) {
+export function Providers({ children, themeConfig }: IProps): JSX.Element {
     return (
         <ThemeProvider {...themeConfig}>
             <AppProgressProvider

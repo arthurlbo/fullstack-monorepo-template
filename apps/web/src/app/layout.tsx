@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import type { ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
 
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: "A modern Full-stack monorepo template to kickstart your web development.",
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
     return (
         <html lang="en" suppressHydrationWarning>
             <body
