@@ -91,11 +91,12 @@ core/
 The design system is the single source of truth for base components (Button, Input, Badge, etc.) shared across all web apps.
 
 ```ts
-// Correct — primitives from the package
-// Correct — compositions specific to the app live in shared/components/
+// Primitives from the design system package
+import { Button, Input } from "@repo/design-system-web/components";
+
+// Compositions specific to this app live in shared/components/
 import { LinkButton } from "@/shared/components/navigation";
 import { EquipmentCard } from "@/shared/components/operation";
-import { Button, Input } from "@repo/design-system/components";
 ```
 
 **When to add to `@repo/design-system`:** The component is a primitive with no business logic, is used in more than one app.

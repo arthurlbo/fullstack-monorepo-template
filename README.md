@@ -26,19 +26,21 @@
 
 - **Monorepo**: pnpm workspaces + Turborepo
 - **Web**: Next.js 16, React 19, TypeScript, Tailwind CSS v4
-- **Mobile**: Expo, React Native, TypeScript, NativeWind
+- **Mobile**: Expo, React Native, TypeScript, NativeWind (Tailwind v3)
 - **Backend**: NestJS 11, TypeScript, TypeORM, PostgreSQL
 - **Validation**: Zod (shared schemas via `@repo/contracts`)
 - **Testing**: Vitest, Playwright, Supertest
 - **Linting/Formatting**: ESLint 10, Prettier
-- **Git hooks**: Husky + Commitlint
+- **Git hooks**: Husky + Commitlint + lint-staged
 - **Containerization**: Docker + Docker Compose
+- **Package versioning**: Changesets
+- **Dependency updates**: Dependabot (weekly, grouped by ecosystem)
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js >= 22
+- Node.js >= 22 (use `nvm` or `fnm` — a `.nvmrc` with `24.16.0` is provided)
 - pnpm >= 10.26.2
 - Docker (optional, for containerized development)
 
@@ -90,6 +92,12 @@ fullstack-monorepo-template/
 │       ├── playwright/
 │       ├── typescript/
 │       └── tsup/
+├── .changeset/             # Pending changeset files
+├── .github/
+│   ├── workflows/ci.yml    # CI pipeline
+│   └── dependabot.yml      # Automated dependency updates
+├── .husky/                 # Git hooks (pre-commit, commit-msg)
+├── .nvmrc                  # Node.js version pin (24.16.0)
 ├── docker-compose.*.yaml
 ├── package.json
 ├── pnpm-workspace.yaml
@@ -152,6 +160,24 @@ pnpm docker:production  # Start production services
 pnpm commit             # Interactive commit with Commitizen
 ```
 
+### Changesets
+
+Changesets track breaking changes and new features in packages, then automate `CHANGELOG.md` and version bumps.
+
+```bash
+pnpm changeset          # Open the wizard to describe a change (patch/minor/major)
+pnpm changeset:version  # Apply pending changesets — bumps versions and updates CHANGELOGs
+pnpm changeset:publish  # Build and publish packages to the registry
+pnpm changeset:status   # List packages with unpublished changes
+```
+
+## Git Hooks
+
+| Hook | Trigger | Action |
+|---|---|---|
+| `pre-commit` | Every `git commit` | Runs `pnpm format` across the workspace |
+| `commit-msg` | Every `git commit` | Validates message against Conventional Commits via commitlint |
+
 ## Environment Variables
 
 Environment files live at the monorepo root and are validated via `@repo/env`:
@@ -165,7 +191,8 @@ Environment files live at the monorepo root and are validated via `@repo/env`:
 
 1. Create a new branch from `main`
 2. Make your changes
-3. Run `pnpm lint:fix` and `pnpm typecheck`
-4. Run `pnpm test:all` to verify nothing is broken
-5. Commit using `pnpm commit` (follows Conventional Commits)
-6. Create a Pull Request
+3. If you modified a package under `packages/`, run `pnpm changeset` and describe the impact
+4. Run `pnpm lint:fix` and `pnpm typecheck`
+5. Run `pnpm test:all` to verify nothing is broken
+6. Commit using `pnpm commit` (follows Conventional Commits)
+7. Create a Pull Request

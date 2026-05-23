@@ -1,0 +1,30 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      typescript-eslint:
+        patterns:
+          - "typescript-eslint"
+          - "@typescript-eslint/*"
+      radix-ui:
+        patterns:
+          - "@radix-ui/*"
+      nestjs:
+        patterns:
+          - "@nestjs/*"
+      testing:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
+          - "playwright"
+          - "@playwright/*"
+          - "supertest"
+          - "@types/supertest"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

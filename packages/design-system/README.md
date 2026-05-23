@@ -26,6 +26,12 @@ Built with **Tailwind CSS v4** and **shadcn/ui**. Consumed only by `apps/web`.
 | `@repo/design-system-web/globals.css` | Tailwind base + design tokens (CSS variables) |
 | `@repo/design-system-web/postcss.config` | PostCSS config for Tailwind v4 |
 
+### `"use client"` pragma
+
+Components that use hooks or event handlers include a `"use client"` pragma at the top of each file. This allows Next.js to tree-shake cleanly — Server Components remain server-side while only interactive components are sent to the client bundle.
+
+When adding a new component to this package, include `"use client"` at the top if it uses any React hooks or browser event handlers. Pure presentational components with no interactivity do not need it.
+
 ### Usage
 
 ```ts

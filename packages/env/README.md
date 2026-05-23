@@ -16,6 +16,7 @@ Each env object is **lazily validated on first property access** — only the sc
 | `databaseEnv` | `databaseSchema` | `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` |
 | `apiEnv` | `apiSchema` | `API_PORT`, `ALLOWED_ORIGINS` |
 | `webEnv` | `webSchema` | `WEB_PORT`, `NEXT_PUBLIC_API_URL` |
+| `mobileEnv` | `mobileSchema` | `EXPO_PUBLIC_API_URL` |
 
 ## Usage
 

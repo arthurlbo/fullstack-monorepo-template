@@ -7,7 +7,7 @@ export const baseConfig: Options = {
     clean: true,
     outDir: "dist",
     splitting: true,
-    sourcemap: false,
+    sourcemap: true,
     minify: false,
     outExtension({ format }) {
         return {

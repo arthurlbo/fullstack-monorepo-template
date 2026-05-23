@@ -11,6 +11,10 @@
     },
     "scripts": {
         "commit": "cz",
+        "changeset": "changeset",
+        "changeset:version": "changeset version && pnpm install --lockfile-only",
+        "changeset:publish": "pnpm build && changeset publish",
+        "changeset:status": "changeset status",
         "prepare": "husky",
         "build": "turbo run build",
         "build:packages": "pnpm --filter \"./packages/**\" build",
@@ -42,6 +46,7 @@
         "env::production": "cross-env NODE_ENV=production"
     },
     "devDependencies": {
+        "@changesets/cli": "^2.27.12",
         "@commitlint/cli": "^21.0.1",
         "@commitlint/config-conventional": "^21.0.1",
         "@repo/typescript": "workspace:*",
