@@ -47,11 +47,11 @@ pnpm --filter mobile test:all        # All tests
 All styling is done via NativeWind class names â€” never raw `StyleSheet` objects for colors or spacing. Use design tokens from `@repo/design-system-mobile`:
 
 ```tsx
-import { cn } from "@repo/design-system-mobile/utils";
 import { theme } from "@repo/design-system-mobile/theme";
+import { cn } from "@repo/design-system-mobile/utils";
 
 // Class names use the shared token names
-<View className="bg-primary-500 px-4 py-3" />
+<View className="bg-primary-500 px-4 py-3" />;
 ```
 
 ## Icons
@@ -60,7 +60,8 @@ Icons come from `@tabler/icons-react-native`. Pass `size` and `color` as props â
 
 ```tsx
 import { IconHome } from "@tabler/icons-react-native";
+
 import { theme } from "@repo/design-system-mobile/theme";
 
-<IconHome size={24} color={theme.colors.primary[500]} />
+<IconHome size={24} color={theme.colors.primary[500]} />;
 ```
