@@ -29,6 +29,11 @@
             "types": "./dist/react.d.ts",
             "import": "./dist/react.mjs",
             "require": "./dist/react.cjs"
+        },
+        "./expo": {
+            "types": "./dist/expo.d.ts",
+            "import": "./dist/expo.mjs",
+            "require": "./dist/expo.cjs"
         }
     },
     "peerDependencies": {

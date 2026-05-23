@@ -31,10 +31,14 @@ You are an expert Fullstack Developer specialized in React, Next.js, NestJS, and
 fullstack-monorepo-template/
 ├── apps/
 │   ├── web/          # Next.js 16 + React 19 + TypeScript + Tailwind CSS v4
+│   ├── mobile/       # Expo + React Native + TypeScript + NativeWind
 │   └── api/          # NestJS 11 + TypeScript + PostgreSQL (DDD)
 └── packages/
     ├── contracts/    # @repo/contracts — shared Zod schemas + TypeScript types
-    ├── design-system/ # @repo/design-system — shared UI components (shadcn + Tailwind v4)
+    ├── design-system/
+    │   ├── web/      # @repo/design-system-web — web UI (shadcn + Tailwind v4)
+    │   ├── mobile/   # @repo/design-system-mobile — mobile UI (NativeWind)
+    │   └── shared/   # shared color palette — not a package, just theme.ts
     ├── env/          # @repo/env — centralized env var validation
     └── typescript/   # @repo/typescript — shared tsconfig base
 ```
@@ -98,16 +102,27 @@ export interface ICreateUserDTO extends TCreateUserInput {}
 3. Re-export from `src/index.ts`
 4. Add the new entry point in `tsup.config.ts` and `package.json` exports
 
-### `@repo/design-system` — UI Primitives
-Built with Tailwind CSS v4 and shadcn/ui. **UI primitives always come from `@repo/design-system`.**
+### `@repo/design-system-web` — Web UI Primitives
+Built with Tailwind CSS v4 and shadcn/ui. **Web UI primitives always come from `@repo/design-system-web`.**
 
 ```ts
-import { Button, Input } from "@repo/design-system/components";
-import { cn } from "@repo/design-system/utils";
+import { Button } from "@repo/design-system-web/components";
+import { cn } from "@repo/design-system-web/utils";
 ```
 
-**When to add to `@repo/design-system`**: The component is a primitive with no business logic, used in more than one app.
-**When to keep in `shared/components/`**: The component uses app-specific APIs, contains domain logic, or is only used in one app.
+### `@repo/design-system-mobile` — Mobile UI Primitives
+Built with NativeWind + React Native. **Mobile UI primitives always come from `@repo/design-system-mobile`.**
+
+```ts
+import { Button, Input } from "@repo/design-system-mobile/components";
+import { cn } from "@repo/design-system-mobile/utils";
+import { theme } from "@repo/design-system-mobile/theme";
+```
+
+**Shared color palette:** `packages/design-system/shared/theme.ts` is the single source of truth for the mobile color palette. Web mirrors the same values via CSS variables in `globals.css`. When changing colors, update both files.
+
+**When to add to a design-system package**: The component is a primitive with no business logic, used in more than one screen or feature.
+**When to keep in `shared/components/`**: The component uses app-specific APIs (Linking, navigation), contains domain logic, or is only used in one feature.
 
 ### `@repo/env` — Environment Variable Validation
 Centralized, type-safe env validation with Zod. Lazily validated on first property access.
@@ -166,11 +181,58 @@ tests/
 **Component imports:**
 ```ts
 // Primitives from the design system
-import { Button, Input } from "@repo/design-system/components";
+import { Button } from "@repo/design-system-web/components";
+import { cn } from "@repo/design-system-web/utils";
 
 // App-specific compositions live in shared/components/
 import { LinkButton } from "@/shared/components/navigation";
 ```
+
+### `apps/mobile` — Expo (React Native)
+
+**Commands:**
+```bash
+pnpm --filter mobile start
+pnpm --filter mobile android
+pnpm --filter mobile ios
+pnpm --filter mobile typecheck
+pnpm --filter mobile lint:fix
+pnpm --filter mobile test:unit
+pnpm --filter mobile test:unit:coverage
+pnpm --filter mobile test:all
+```
+
+**Structure:**
+```
+apps/mobile/
+├── tailwind.config.js    # NativeWind — sources theme from @repo/design-system-mobile/theme
+├── metro.config.js       # Metro bundler with NativeWind plugin
+└── src/
+    ├── @types/           # Global TypeScript declarations (.d.ts)
+    ├── app/              # Expo Router (screens, layouts, _layout.tsx)
+    ├── contexts/         # React contexts
+    ├── core/             # Clean Architecture (domain, application, infrastructure)
+    ├── features/         # Feature modules grouped by domain or screen
+    ├── lib/              # Third-party configuration
+    ├── providers/        # React providers (toaster, navigation bar, etc.)
+    └── shared/           # Cross-feature utilities and components
+        ├── components/
+        │   ├── navigation/   # App-specific compositions (LinkButton, etc.)
+        │   └── ui/           # Barrel — re-exports from @repo/design-system-mobile
+        └── utils/            # cn, theme re-export, index
+```
+
+**Component imports:**
+```ts
+// Primitives from the design system
+import { Button, Input } from "@repo/design-system-mobile/components";
+import { cn } from "@repo/design-system-mobile/utils";
+
+// App-specific compositions live in shared/components/
+import { LinkButton } from "@/shared/components/navigation";
+```
+
+**Styling:** All styling via NativeWind class names — never raw StyleSheet objects for colors or spacing. Use theme tokens as class names: `bg-accent-500`, `text-primary-100`, `border-surface-400`, etc.
 
 ### `apps/api` — NestJS (DDD)
 
@@ -315,7 +377,7 @@ Prettier and ESLint run automatically on staged files via lint-staged + Husky on
 ### Before Implementing Any Feature
 1. **Check for existing patterns**: Search for similar components in `features/` and `shared/`.
 2. **Check `@repo/contracts`**: Verify whether the data shape already exists before creating new schemas.
-3. **Check `@repo/design-system`**: Verify whether a UI primitive already exists before building a new one.
+3. **Check `@repo/design-system-web` / `@repo/design-system-mobile`**: Verify whether a UI primitive already exists before building a new one.
 4. **Check `@repo/env`**: Verify whether the environment variable is already validated before adding it.
 
 ### After Every Change
@@ -328,5 +390,5 @@ Prettier and ESLint run automatically on staged files via lint-staged + Husky on
 - If you find code that has comments, uses `any`, or violates these conventions, your first priority is to refactor it.
 - Never duplicate data shapes — derive API DTOs from `@repo/contracts`, never redefine them.
 - Never bypass ESLint or TypeScript errors with escape hatches (`// @ts-ignore`, `// eslint-disable` without strong justification).
-- Never write raw hex colors or hardcoded spacing — use design tokens from `@repo/design-system/globals.css`.
+- Never write raw hex colors or hardcoded spacing — use design tokens from `@repo/design-system-web/globals.css` (web) or NativeWind theme classes like `bg-accent-500` (mobile).
 - Always check for broken imports and type errors before declaring a task finished.

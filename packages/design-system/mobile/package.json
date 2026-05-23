@@ -1,0 +1,45 @@
+{
+    "name": "@repo/design-system-mobile",
+    "version": "1.0.0",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "build": "tsup",
+        "lint": "eslint",
+        "lint:fix": "eslint --fix",
+        "prettier:fix": "prettier --write .",
+        "format": "pnpm lint:fix && pnpm prettier:fix",
+        "typecheck": "tsc --noEmit"
+    },
+    "exports": {
+        "./components": "./src/components/index.ts",
+        "./utils": "./src/utils/index.ts",
+        "./theme": {
+            "types": "./dist/theme.d.ts",
+            "import": "./dist/theme.mjs",
+            "require": "./dist/theme.cjs"
+        }
+    },
+    "peerDependencies": {
+        "react": ">=19.0.0",
+        "react-native": ">=0.79.0",
+        "tailwindcss": "~3.4.0"
+    },
+    "dependencies": {
+        "class-variance-authority": "^0.7.1",
+        "clsx": "^2.1.1",
+        "tailwind-merge": "^3.6.0"
+    },
+    "devDependencies": {
+        "@repo/eslint": "workspace:*",
+        "@repo/tsup": "workspace:*",
+        "@repo/typescript": "workspace:*",
+        "@types/react": "~19.1.10",
+        "eslint": "^10.2.1",
+        "nativewind": "^4.2.0",
+        "react": "19.1.0",
+        "react-native": "0.81.5",
+        "tsup": "^8.5.1",
+        "typescript": "^5.8.3"
+    }
+}
