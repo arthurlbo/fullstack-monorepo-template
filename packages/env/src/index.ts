@@ -14,16 +14,17 @@ const getEnvFilePath = (): string => {
         type: "file",
     });
 
-    const rootDir = workspaceRoot ? path.dirname(workspaceRoot) : path.resolve(import.meta.dirname, "../..");
+    if (!workspaceRoot) {
+        throw new Error("Could not find pnpm-workspace.yaml. Run commands from within the monorepo.");
+    }
 
-    return path.join(rootDir, `.env.${environment}`);
+    return path.join(path.dirname(workspaceRoot), `.env.${environment}`);
 };
 
 const envPath = getEnvFilePath();
 dotenv.config({ path: envPath });
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const validateEnv = <T extends z.ZodType<any>>(schema: T, schemaName: string): z.infer<T> => {
+const validateEnv = <T extends z.ZodTypeAny>(schema: T, schemaName: string): z.infer<T> => {
     const validationResult = schema.safeParse(process.env);
 
     if (!validationResult.success) {

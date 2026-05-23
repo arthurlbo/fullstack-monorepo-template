@@ -8,6 +8,7 @@ const workspaceRoot = path.resolve(projectRoot, "../..");
 const config = getDefaultConfig(projectRoot);
 
 config.watchFolders = [workspaceRoot];
+config.resolver.unstable_enablePackageExports = true;
 config.resolver.nodeModulesPaths = [
     path.resolve(projectRoot, "node_modules"),
     path.resolve(workspaceRoot, "node_modules"),

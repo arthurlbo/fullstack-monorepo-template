@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { BookOpen, Globe } from "lucide-react-native";
+import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinkButton } from "@/shared/components/navigation";
 
@@ -16,14 +16,16 @@ export const Home = () => {
 
                 <View className="flex-row items-center gap-3">
                     <LinkButton
-                        label="Explore Docs"
                         href="https://github.com/arthurlbo/fullstack-monorepo-template"
-                        icon={{ icon: BookOpen }}
+                        label="Explore Docs"
+                        icon={{ icon: IconBrandGithub }}
+                        className="border border-surface-400 bg-transparent"
                     />
                     <LinkButton
                         href="https://www.linkedin.com/in/arthurlbo/"
                         label="Who Am I?"
-                        icon={{ icon: Globe }}
+                        icon={{ icon: IconBrandLinkedin }}
+                        className="bg-emerald-500"
                     />
                 </View>
             </View>

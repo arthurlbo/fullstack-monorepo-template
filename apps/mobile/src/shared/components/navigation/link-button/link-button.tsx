@@ -1,5 +1,5 @@
 import { Linking } from "react-native";
-import { Button } from "@repo/design-system-mobile/components";
+import { Button, type TIcon } from "@repo/design-system-mobile/components";
 
 interface ILinkButtonProps {
     href: string;
@@ -10,7 +10,7 @@ interface ILinkButtonProps {
 
 export const LinkButton = ({ className, href, label, icon }: ILinkButtonProps) => {
     return (
-        <Button className={className} iconRight={icon} onPress={() => Linking.openURL(href)}>
+        <Button className={className} iconLeft={icon} onPress={() => Linking.openURL(href)}>
             {label}
         </Button>
     );

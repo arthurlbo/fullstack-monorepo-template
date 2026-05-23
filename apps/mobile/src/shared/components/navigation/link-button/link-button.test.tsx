@@ -1,6 +1,7 @@
 import React, { act } from "react";
 import { Linking } from "react-native";
 import { create } from "react-test-renderer";
+import type { TIcon } from "@repo/design-system-mobile/components";
 import { LinkButton } from "./link-button";
 
 vi.mock("react-native", () => ({
