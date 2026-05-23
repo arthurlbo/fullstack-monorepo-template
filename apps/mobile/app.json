@@ -7,18 +7,21 @@
         "orientation": "portrait",
         "userInterfaceStyle": "dark",
         "newArchEnabled": true,
+        "icon": "./assets/icon.png",
         "ios": {
             "supportsTablet": true,
             "bundleIdentifier": "com.template.mobile"
         },
         "android": {
             "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
                 "backgroundColor": "#0F131F"
             },
             "package": "com.template.mobile"
         },
         "web": {
-            "bundler": "metro"
+            "bundler": "metro",
+            "favicon": "./assets/favicon.png"
         },
         "plugins": [
             [
@@ -31,7 +34,9 @@
             [
                 "expo-splash-screen",
                 {
-                    "backgroundColor": "#0F131F"
+                    "backgroundColor": "#0F131F",
+                    "image": "./assets/splash.png",
+                    "resizeMode": "cover"
                 }
             ]
         ],
