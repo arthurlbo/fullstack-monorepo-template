@@ -1,4 +1,4 @@
-import type * as React from "react";
+import * as React from "react";
 
 import { cn } from "@/shared/utils/cn";
 import { Slot } from "@radix-ui/react-slot";
@@ -43,7 +43,7 @@ function Button({
 }: React.ComponentProps<"button"> &
     VariantProps<typeof buttonVariants> & {
         asChild?: boolean;
-    }) {
+    }): React.ReactElement {
     const Comp = asChild ? Slot : "button";
 
     return <Comp data-slot="button" className={cn(buttonVariants({ variant, size, className }))} {...props} />;

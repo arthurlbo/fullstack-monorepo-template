@@ -40,5 +40,32 @@
         "^@/app(/.*)?$",
         "^[./]"
     ],
-    "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"]
+    "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
+    "overrides": [
+        {
+            "files": ["apps/mobile/**/*", "packages/design-system/mobile/**/*"],
+            "options": {
+                "importOrder": [
+                    "^\\..*\\.css$",
+                    "^node:(.*)$",
+                    "^react$",
+                    "^react-native$",
+                    "^expo$",
+                    "^expo-(.*)$",
+                    "^@react-native(.*)$",
+                    "^@expo(.*)$",
+                    "<THIRD_PARTY_MODULES>",
+                    "^@repo/(.*)$",
+                    "^@/contexts(/.*)?$",
+                    "^@/core(/.*)?$",
+                    "^@/features(/.*)?$",
+                    "^@/lib(/.*)?$",
+                    "^@/providers(/.*)?$",
+                    "^@/shared(/.*)?$",
+                    "^@/(.*)$",
+                    "^\\.(.*)$"
+                ]
+            }
+        }
+    ]
 }

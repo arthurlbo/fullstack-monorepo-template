@@ -1,0 +1,38 @@
+import type { JSX } from "react";
+
+import { Text, View } from "react-native";
+
+import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import { LinkButton } from "@/shared/components/navigation";
+
+export const Home = (): JSX.Element => {
+    return (
+        <SafeAreaView className="flex-1 bg-background">
+            <View className="flex-1 items-center justify-center gap-8 px-6">
+                <View className="items-center gap-3">
+                    <Text className="font-heading text-3xl text-primary-100">Hello Dev</Text>
+                    <Text className="max-w-xs text-center font-body text-sm text-primary-400">
+                        A modern Full-stack monorepo template to kickstart your mobile development.
+                    </Text>
+                </View>
+
+                <View className="flex-row items-center gap-3">
+                    <LinkButton
+                        href="https://github.com/arthurlbo/fullstack-monorepo-template"
+                        label="Explore Docs"
+                        icon={{ icon: IconBrandGithub }}
+                        className="border border-surface-400 bg-transparent"
+                    />
+                    <LinkButton
+                        href="https://www.linkedin.com/in/arthurlbo/"
+                        label="Who Am I?"
+                        icon={{ icon: IconBrandLinkedin }}
+                        className="bg-emerald-500"
+                    />
+                </View>
+            </View>
+        </SafeAreaView>
+    );
+};
