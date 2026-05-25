@@ -4,9 +4,9 @@ import * as dotenv from "dotenv";
 import { findUpSync } from "find-up";
 import z from "zod";
 
-import { apiSchema, databaseSchema, globalSchema, webSchema, mobileSchema } from "./env.schema";
+import { apiSchema, databaseSchema, globalSchema, mobileSchema, webSchema } from "./env.schema";
 
-const getEnvFilePath = (): string => {
+const loadEnvFile = (): void => {
     const environment = process.env.NODE_ENV || "development";
 
     const workspaceRoot = findUpSync("pnpm-workspace.yaml", {
@@ -14,15 +14,13 @@ const getEnvFilePath = (): string => {
         type: "file",
     });
 
-    if (!workspaceRoot) {
-        throw new Error("Could not find pnpm-workspace.yaml. Run commands from within the monorepo.");
-    }
+    if (!workspaceRoot) return;
 
-    return path.join(path.dirname(workspaceRoot), `.env.${environment}`);
+    const envFilePath = path.join(path.dirname(workspaceRoot), `.env.${environment}`);
+    dotenv.config({ path: envFilePath });
 };
 
-const envPath = getEnvFilePath();
-dotenv.config({ path: envPath });
+loadEnvFile();
 
 const validateEnv = <T extends z.ZodTypeAny>(schema: T, schemaName: string): z.infer<T> => {
     const validationResult = schema.safeParse(process.env);
