@@ -27,11 +27,11 @@
         "clear:db": "pnpm typeorm:tsx schema:drop -d ./src/infra/database/data-source.ts"
     },
     "dependencies": {
-        "@nestjs/common": "^11.1.21",
+        "@nestjs/common": "^11.1.24",
         "@nestjs/config": "^4.0.4",
-        "@nestjs/core": "^11.1.21",
-        "@nestjs/platform-express": "^11.1.21",
-        "@nestjs/swagger": "^11.4.3",
+        "@nestjs/core": "^11.1.24",
+        "@nestjs/platform-express": "^11.1.24",
+        "@nestjs/swagger": "^11.4.4",
         "@nestjs/terminus": "^11.0.0",
         "@nestjs/typeorm": "^11.0.1",
         "@repo/contracts": "workspace:*",
@@ -49,7 +49,7 @@
     "devDependencies": {
         "@nestjs/cli": "^11.0.21",
         "@nestjs/schematics": "^11.1.0",
-        "@nestjs/testing": "^11.1.21",
+        "@nestjs/testing": "^11.1.24",
         "@repo/eslint": "workspace:*",
         "@repo/typescript": "workspace:*",
         "@repo/vitest": "workspace:*",
