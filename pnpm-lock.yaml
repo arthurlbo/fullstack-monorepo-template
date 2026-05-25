@@ -257,8 +257,8 @@ importers:
         specifier: ^3.8.3
         version: 3.8.3
       react-test-renderer:
-        specifier: 19.1.0
-        version: 19.1.0(react@19.1.0)
+        specifier: 19.2.6
+        version: 19.2.6(react@19.1.0)
       tailwindcss:
         specifier: 3.4.17
         version: 3.4.17(ts-node@10.9.2(@swc/core@1.15.33)(@types/node@25.8.0)(typescript@5.9.3))
@@ -7884,10 +7884,10 @@ packages:
       '@types/react':
         optional: true
 
-  react-test-renderer@19.1.0:
-    resolution: {integrity: sha512-jXkSl3CpvPYEF+p/eGDLB4sPoDX8pKkYvRl9+rR8HxLY0X04vW7hCm1/0zHoUSjPZ3bDa+wXWNTDVIw/R8aDVw==}
+  react-test-renderer@19.2.6:
+    resolution: {integrity: sha512-GbS6V23YduFTPiWJ5xICbKEjRcqx1Z90js/V5miqhz7qp/d6xSe9Dd6NjSQODFRdzdsqRMPW82E/sFpPRbY5Mw==}
     peerDependencies:
-      react: ^19.1.0
+      react: ^19.2.6
 
   react@19.1.0:
     resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
@@ -15762,7 +15762,7 @@ snapshots:
 
   jest-message-util@29.7.0:
     dependencies:
-      '@babel/code-frame': 7.29.0
+      '@babel/code-frame': 7.29.7
       '@jest/types': 29.6.3
       '@types/stack-utils': 2.0.3
       chalk: 4.1.2
@@ -17508,11 +17508,11 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.1.17
 
-  react-test-renderer@19.1.0(react@19.1.0):
+  react-test-renderer@19.2.6(react@19.1.0):
     dependencies:
       react: 19.1.0
       react-is: 19.2.6
-      scheduler: 0.26.0
+      scheduler: 0.27.0
 
   react@19.1.0: {}
 
