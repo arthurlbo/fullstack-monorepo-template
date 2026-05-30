@@ -20,7 +20,7 @@
         "test:all": "pnpm test:unit"
     },
     "dependencies": {
-        "@expo-google-fonts/plus-jakarta-sans": "^0.3.0",
+        "@expo-google-fonts/plus-jakarta-sans": "^0.4.2",
         "@tabler/icons-react-native": "^3.34.0",
         "@repo/design-system-mobile": "workspace:*",
         "clsx": "^2.1.1",
