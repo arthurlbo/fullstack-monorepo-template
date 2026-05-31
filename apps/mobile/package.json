@@ -24,7 +24,7 @@
         "@tabler/icons-react-native": "^3.34.0",
         "@repo/design-system-mobile": "workspace:*",
         "clsx": "^2.1.1",
-        "expo": "~54.0.34",
+        "expo": "~56.0.8",
         "expo-font": "~56.0.5",
         "expo-navigation-bar": "~5.0.10",
         "expo-router": "~56.2.8",
