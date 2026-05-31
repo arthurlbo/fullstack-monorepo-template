@@ -44,7 +44,7 @@
         "@repo/tsup": "workspace:*",
         "@repo/typescript": "workspace:*",
         "@tailwindcss/postcss": "^4.3.0",
-        "@types/react": "19.2.14",
+        "@types/react": "19.2.15",
         "@types/react-dom": "19.2.3",
         "eslint": "^10.2.1",
         "react": "^19.2.6",
